@@ -1,0 +1,14 @@
+// override boostrap variables + add custom
+@import 'theme';
+@import 'components';
+
+@import 'bootstrap/scss/bootstrap';
+
+@import 'bootstrap-overrides';
+
+* {
+  // use custom variables
+  color: var(--dv-example);
+}
+
+// add your global styles here

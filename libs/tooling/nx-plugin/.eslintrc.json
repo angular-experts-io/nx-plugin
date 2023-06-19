@@ -1,0 +1,27 @@
+{
+  "extends": ["../../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*", "src/generators/lib/files/**/*.*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [0]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
+      "files": ["./package.json", "./generators.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/nx-plugin-checks": "error"
+      }
+    }
+  ]
+}

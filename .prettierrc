@@ -1,0 +1,11 @@
+{
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "tsconfig.base.json",
+      "options": {
+        "printWidth": 180
+      }
+    }
+  ]
+}

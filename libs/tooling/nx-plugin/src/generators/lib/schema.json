@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Lib",
+  "title": "",
+  "type": "object",
+  "required": ["name", "type", "scope"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of library",
+      "x-prompt": {
+        "type": "list",
+        "message": "What is the library type?",
+        "items": [
+          {
+            "value": "feature",
+            "label": "Feature - lazy loaded feature (route) consumed by an app"
+          },
+          {
+            "value": "pattern",
+            "label": "Pattern - eager feature, eg connection status, tracing or interceptor"
+          },
+          {
+            "value": "data-access",
+            "label": "Data Access - NgRx based data access (headless)"
+          },
+          {
+            "value": "event",
+            "label": "Event - events dispatched by features / patterns (and consumed by data-access)"
+          },
+          {
+            "value": "ui",
+            "label": "UI - standalone (simple / view / presentational) UI component, eg calendar or toggle"
+          },
+          {
+            "value": "util",
+            "label": "Util - Angular based util (service), eg validator, mapper, or logger"
+          },
+          {
+            "value": "util-fn",
+            "label": "Util Function - TypeScript based util (function), eg data transformation or calculation"
+          },
+          {
+            "value": "model",
+            "label": "Model - TypeScript interfaces, types, enums and consts"
+          }
+        ]
+      }
+    },
+    "scope": {
+      "type": "string",
+      "description": "The scope of the library",
+      "x-prompt": {
+        "type": "list",
+        "message": "What is the library scope?",
+        "items": [
+          {
+            "value": "shared",
+            "label": "Shared - shared by multiple app scopes"
+          },
+          {
+            "value": "gesuch-app",
+            "label": "gesuch-app - used only by gesuch-app"
+          }
+        ]
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the library name (use singular form)?"
+    }
+  }
+}

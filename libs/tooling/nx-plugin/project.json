@@ -1,0 +1,67 @@
+{
+  "name": "tooling-nx-plugin",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tooling/nx-plugin/src",
+  "projectType": "library",
+  "tags": ["scope:tooling", "type:nx-plugin"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/tooling/nx-plugin",
+        "main": "libs/tooling/nx-plugin/src/index.ts",
+        "tsConfig": "libs/tooling/nx-plugin/tsconfig.lib.json",
+        "assets": [
+          "libs/tooling/nx-plugin/*.md",
+          {
+            "input": "./libs/tooling/nx-plugin/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/tooling/nx-plugin/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/tooling/nx-plugin",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/tooling/nx-plugin",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/tooling/nx-plugin/**/*.ts",
+          "libs/tooling/nx-plugin/generators.json",
+          "libs/tooling/nx-plugin/executors.json",
+          "libs/tooling/nx-plugin/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/tooling/nx-plugin/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  }
+}

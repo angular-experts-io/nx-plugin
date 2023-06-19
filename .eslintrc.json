@@ -1,0 +1,141 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "banTransitiveDependencies": true,
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "scope:gesuch-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:gesuch-app"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:tooling",
+                "onlyDependOnLibsWithTags": ["scope:tooling"]
+              },
+              {
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": [
+                  "type:feature",
+                  "type:data-access",
+                  "type:pattern",
+                  "type:model"
+                ]
+              },
+              {
+                "sourceTag": "type:feature",
+                "onlyDependOnLibsWithTags": [
+                  "type:feature",
+                  "type:pattern",
+                  "type:data-access",
+                  "type:event",
+                  "type:ui",
+                  "type:util",
+                  "type:util-fn",
+                  "type:model"
+                ]
+              },
+              {
+                "sourceTag": "type:pattern",
+                "onlyDependOnLibsWithTags": [
+                  "type:pattern",
+                  "type:data-access",
+                  "type:event",
+                  "type:ui",
+                  "type:util",
+                  "type:util-fn",
+                  "type:model"
+                ]
+              },
+              {
+                "sourceTag": "type:data-access",
+                "onlyDependOnLibsWithTags": [
+                  "type:data-access",
+                  "type:event",
+                  "type:util",
+                  "type:util-fn",
+                  "type:model"
+                ]
+              },
+              {
+                "sourceTag": "type:event",
+                "onlyDependOnLibsWithTags": ["type:model"]
+              },
+              {
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": [
+                  "type:ui",
+                  "type:util",
+                  "type:util-fn",
+                  "type:model"
+                ],
+                "bannedExternalImports": ["@ngrx/*"]
+              },
+              {
+                "sourceTag": "type:util",
+                "onlyDependOnLibsWithTags": [
+                  "type:util",
+                  "type:util-fn",
+                  "type:model"
+                ],
+                "bannedExternalImports": ["@ngrx/*"]
+              },
+              {
+                "sourceTag": "type:util-fn",
+                "onlyDependOnLibsWithTags": ["type:util-fn", "type:model"],
+                "bannedExternalImports": ["@angular/*", "@ngrx/*"]
+              },
+              {
+                "sourceTag": "type:model",
+                "onlyDependOnLibsWithTags": ["type:model"],
+                "bannedExternalImports": ["@angular/*", "@ngrx/*"]
+              },
+              {
+                "sourceTag": "type:e2e",
+                "onlyDependOnLibsWithTags": []
+              },
+              {
+                "sourceTag": "type:styles",
+                "onlyDependOnLibsWithTags": ["type:styles"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    }
+  ]
+}

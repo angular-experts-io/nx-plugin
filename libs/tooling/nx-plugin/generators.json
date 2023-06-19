@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "tooling-nx-plugin",
+  "version": "0.0.1",
+  "generators": {
+    "lib": {
+      "factory": "./src/generators/lib/generator",
+      "schema": "./src/generators/lib/schema.json",
+      "description": "Generate a new library following the scope and type architecture"
+    },
+    "app": {
+      "factory": "./src/generators/app/generator",
+      "schema": "./src/generators/app/schema.json",
+      "description": "Generate a new application and update scope rules"
+    },
+    "validate": {
+      "factory": "./src/generators/validate/generator",
+      "schema": "./src/generators/validate/schema.json",
+      "description": "Validate module boundaries, tags, folder structure, tsconfig aliases and selectors"
+    }
+  }
+}
