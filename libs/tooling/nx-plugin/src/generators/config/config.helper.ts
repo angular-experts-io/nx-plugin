@@ -19,7 +19,6 @@ export async function createAndGetConfigFileIfNonExisting(
   tree: Tree,
   config?: Config
 ): Promise<Config> {
-  console.log('Config', config);
   const configurationFileBuffer = tree.read(CONFIG_FILE_NAME);
   const configFile: Config = configurationFileBuffer
     ? JSON.parse(configurationFileBuffer.toString())
@@ -27,8 +26,8 @@ export async function createAndGetConfigFileIfNonExisting(
 
   if (
     configFile?.contexts?.length > 0 &&
-    configFile.prefix &&
-    configFile.appSuffix
+    configFile?.prefix &&
+    configFile?.appSuffix
   ) {
     return;
   }
@@ -44,38 +43,35 @@ export async function createAndGetConfigFileIfNonExisting(
   let appSuffix;
 
   if (!configFile?.contexts) {
-    const contextsString = config.contexts || await inquirer.prompt({
+    const contextsPrompt = config?.contexts || await inquirer.prompt({
       name: 'availableContexts',
       message: `Please enter all contexts (comma separated) you want to use in your project.
         (default: ${DEFAULT_CONFIG_OPTIONS.contexts.join(', ')})`,
     });
-    contexts = contextsString.availableContexts.split(',');
+    contexts = contextsPrompt.availbaleContexts ?
+      contextsPrompt.availableContexts.split(',')
+      : DEFAULT_CONFIG_OPTIONS.contexts;
   }
 
   if (!configFile?.prefix) {
-    prefix = config.prefix || (await inquirer.prompt({
+    prefix = config?.prefix || (await inquirer.prompt({
       name: 'companyPrefix',
       message: `Please enter your company prefix or company name. (default: ${DEFAULT_CONFIG_OPTIONS.prefix})`,
     })).companyPrefix;
   }
 
   if (!configFile?.appSuffix) {
-    appSuffix = config.appSuffix || (await inquirer.prompt({
+    appSuffix = config?.appSuffix || (await inquirer.prompt({
       name: 'suffix',
       message: `Please enter a suffix for generated applications. (default: ${DEFAULT_CONFIG_OPTIONS.appSuffix})`,
     })).suffix;
   }
-
-  console.log('Contexts', contexts);
-  console.log('Prefix', prefix);
-  console.log('AppSuffix', appSuffix);
 
   const CONFIG_FILE = {
     contexts: contexts || DEFAULT_CONFIG_OPTIONS.contexts,
     prefix: prefix || DEFAULT_CONFIG_OPTIONS.prefix,
     appSuffix: appSuffix || DEFAULT_CONFIG_OPTIONS.appSuffix,
   };
-
   tree.write(CONFIG_FILE_NAME, JSON.stringify(CONFIG_FILE));
 
   return CONFIG_FILE;

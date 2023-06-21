@@ -62,6 +62,10 @@
           {
             "value": "app specific",
             "label": "App specific - used by a single app"
+          },
+          {
+            "value": "foo-app",
+            "label": "foo-app - used only by foo-app"
           }
         ]
       }

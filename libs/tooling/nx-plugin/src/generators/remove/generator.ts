@@ -11,8 +11,8 @@ import {RemoveOptions} from './schema';
 
 export default async function remove(tree: Tree, schema: RemoveOptions): Promise<() => Promise<void>> {
   const { projectName } = schema;
-
   let projectToDelete;
+
   if (projectName) {
     if (existsProject(tree, projectName)) {
       projectToDelete = projectName;

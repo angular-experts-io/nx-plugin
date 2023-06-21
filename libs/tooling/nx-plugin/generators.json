@@ -13,6 +13,16 @@
       "schema": "./src/generators/app/schema.json",
       "description": "Generate a new application and update scope rules"
     },
+    "move": {
+      "factory": "./src/generators/move/generator",
+      "schema": "./src/generators/move/schema.json",
+      "description": "Move an existing application to a new location"
+    },
+    "remove": {
+      "factory": "./src/generators/remove/generator",
+      "schema": "./src/generators/remove/schema.json",
+      "description": "Remove an existing application from the workspace"
+    },
     "validate": {
       "factory": "./src/generators/validate/generator",
       "schema": "./src/generators/validate/schema.json",

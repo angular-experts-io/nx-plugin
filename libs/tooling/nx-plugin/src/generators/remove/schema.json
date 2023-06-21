@@ -7,10 +7,9 @@
     "projectName": {
       "type": "string",
       "description": "Name of the Project you want to delete",
-      "x-prompt": {
-        "type": "list",
-        "message": "Which project do you want to delete?",
-        "items": []
+      "$default": {
+        "$source": "argv",
+        "index": 0
       }
     }
   },
