@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "remove",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Name of the Project you want to delete",
+      "x-prompt": {
+        "type": "list",
+        "message": "Which project do you want to delete?",
+        "items": []
+      }
+    }
+  },
+  "required": []
+}
