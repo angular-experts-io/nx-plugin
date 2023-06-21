@@ -26,6 +26,7 @@ import { uiTypeFactory } from './types/ui';
 import { utilTypeFactory } from './types/util';
 import { utilFnTypeFactory } from './types/util-fn';
 import { modelTypeFactory } from './types/model';
+import {projectPrompt} from "../prompts/project.prompt";
 
 const LIB_TYPE_GENERATOR_MAP: LibTypeGeneratorMap = {
   feature: featureTypeFactory,
@@ -38,15 +39,24 @@ const LIB_TYPE_GENERATOR_MAP: LibTypeGeneratorMap = {
   model: modelTypeFactory,
 };
 
-function normalizeOptions(
+async function normalizeOptions(
   tree: Tree,
   options: LibGeneratorSchema
-): NormalizedSchema {
-  const projectDirectory = `/${options.scope}/${options.type}`;
+): Promise<NormalizedSchema> {
+  const {scope} = options;
+  let libPath ;
+  
+  if (scope === 'customer-app') {
+    libPath = await projectPrompt(tree);
+  } else {
+    libPath = 'shared';
+  }
+
+  const projectDirectory = `/${libPath}/${options.type}`;
   const nameDasherized = dasherize(options.name);
-  const projectName = `${options.scope}-${options.type}-${nameDasherized}`;
+  const projectName = `${libPath}-${options.type}-${nameDasherized}`;
   const projectRoot = `${getWorkspaceLayout(tree).libsDir}${projectDirectory}`;
-  const parsedTags = [`type:${options.type}`, `scope:${options.scope}`];
+  const parsedTags = [`type:${options.type}`, `scope:${libPath}`];
 
   return {
     ...options,
@@ -61,6 +71,8 @@ function normalizeOptions(
 export default async function (tree: Tree, options: LibGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
   const { type, scope } = normalizedOptions;
+
+
   const libTypeFactory = LIB_TYPE_GENERATOR_MAP[type];
 
   const { libGenerator, libDefaultOptions, generators, postprocess } =

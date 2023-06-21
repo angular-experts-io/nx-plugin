@@ -60,8 +60,8 @@
             "label": "Shared - shared by multiple app scopes"
           },
           {
-            "value": "gesuch-app",
-            "label": "gesuch-app - used only by gesuch-app"
+            "value": "app specific",
+            "label": "App specific - used by a single app"
           }
         ]
       }
