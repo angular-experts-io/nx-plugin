@@ -45,7 +45,7 @@ async function normalizeOptions(
 ): Promise<NormalizedSchema> {
   const {scope} = options;
   let libPath ;
-  
+
   if (scope === 'customer-app') {
     libPath = await projectPrompt(tree);
   } else {
@@ -69,8 +69,8 @@ async function normalizeOptions(
 }
 
 export default async function (tree: Tree, options: LibGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  const { type, scope } = normalizedOptions;
+  const normalizedOptions = await normalizeOptions(tree, options);
+  const { type } = normalizedOptions;
 
 
   const libTypeFactory = LIB_TYPE_GENERATOR_MAP[type];

@@ -35,7 +35,8 @@ export default async function (tree: Tree, options: AppGeneratorSchema) {
   const pathToApp = path.join(projectRoot, 'src', 'app');
   removeNxWelcomeComponent(tree, pathToApp);
   removeAppComponentTests(tree, pathToApp);
-  updateProjectJson(tree, projectRoot);
+  // TODO this is specific to our setup, should be removed for npm lib - check with Tomas
+  // updateProjectJson(tree, projectRoot);
   addScope(tree, projectName);
 
   await formatFiles(tree);
