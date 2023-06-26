@@ -4,9 +4,8 @@ import * as inquirer from 'inquirer';
 import * as chalk from 'chalk';
 
 import typePrompt from '../prompts/type.prompt';
-import scopePrompt from '../prompts/scope.prompt';
 import {projectPrompt} from '../prompts/project.prompt';
-import {contextPrompt} from '../prompts/context.prompt';
+import {scopePrompt} from '../prompts/scopePrompt';
 import {ScopeType} from '../model/scope-type';
 import {ProjectTypes} from '../model/project-types';
 import {extractName} from '../utils/project';
@@ -27,12 +26,6 @@ export default async function move(tree: Tree, schema: MoveSchema) {
   const isApplication = angularJSON.projects[projectName]?.includes('apps');
 
   if (!destination) {
-
-    let targetContext = await contextPrompt(
-      tree,
-      'To which context do you want to move your project?'
-    );
-    destination = `${targetContext}/`;
     let name;
 
     if (isApplication) {
@@ -40,14 +33,8 @@ export default async function move(tree: Tree, schema: MoveSchema) {
     } else {
       const targetScope = await scopePrompt(
         tree,
-        'Which scope do you want to move your project to',
-        targetContext
+        'Which scope do you want to move your project to'
       );
-
-      if (targetScope === ScopeType.APP_SPECIFIC) {
-        const app = await applicationPrompt(tree, targetContext);
-        targetContext = `${targetContext}/${app}`;
-      }
 
       const targetType = await typePrompt(
         tree,
@@ -56,8 +43,8 @@ export default async function move(tree: Tree, schema: MoveSchema) {
 
       destination =
         targetScope === ScopeType.APP_SPECIFIC
-          ? `${targetContext}/${targetType}/`
-          : `${targetContext}/${targetScope}/${targetType}/`;
+          ? `${targetScope}/${targetType}/`
+          : `${targetScope}/${targetScope}/${targetType}/`;
       name = extractName(projectName, ProjectTypes.LIBRARY);
     }
 

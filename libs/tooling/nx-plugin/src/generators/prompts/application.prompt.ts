@@ -1,7 +1,7 @@
 import * as inquirer from 'inquirer';
 import * as inquirerPrompt from 'inquirer-autocomplete-prompt';
 import {getProjects, Tree} from '@nrwl/devkit';
-import {contextPrompt} from "./context.prompt";
+import {scopePrompt} from "./scopePrompt";
 
 inquirer.registerPrompt('autocomplete', inquirerPrompt.default);
 
@@ -11,7 +11,7 @@ export async function applicationPrompt(
 ): Promise<string> {
 
   if (!context) {
-    context = await contextPrompt(
+    context = await scopePrompt(
       tree,
       'Which context does your project belong to'
     );

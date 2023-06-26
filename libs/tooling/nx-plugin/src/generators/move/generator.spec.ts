@@ -8,7 +8,7 @@ import * as validateModuleBoundaries from '../module-boundaries-validate/generat
 import * as applicationPrompts from '../prompts/application.prompt';
 import * as generatorUtils from '../utils/generators-angular';
 import * as projectPrompts from '../prompts/project.prompt';
-import * as contextPrompts from '../prompts/context.prompt';
+import * as contextPrompts from '../prompts/scopePrompt';
 import * as extractNameUtils from '../utils/projectname';
 import * as scopePrompts from '../prompts/scope.prompt';
 import * as configHelper from '../config/config.helper';
@@ -30,7 +30,7 @@ jest
   .mockImplementation(() => Promise.resolve());
 
 jest
-  .spyOn(configHelper, 'getContexts')
+  .spyOn(configHelper, 'getScopes')
   .mockImplementation(() => mockContexts);
 
 jest
@@ -59,7 +59,7 @@ describe('move generator', () => {
       .mockReturnValue(Promise.resolve(appName));
 
     jest
-      .spyOn(contextPrompts, 'contextPrompt')
+      .spyOn(contextPrompts, 'scopePrompt')
       .mockImplementation(() => Promise.resolve(context));
 
     jest
@@ -109,7 +109,7 @@ describe('move generator', () => {
       .mockReturnValue(Promise.resolve(appName));
 
     jest
-      .spyOn(contextPrompts, 'contextPrompt')
+      .spyOn(contextPrompts, 'scopePrompt')
       .mockImplementation(() => Promise.resolve(context));
 
     jest
@@ -147,7 +147,7 @@ describe('move generator', () => {
 
     await move(tree, {});
 
-    expect(contextPrompts.contextPrompt).toHaveBeenCalled();
+    expect(contextPrompts.scopePrompt).toHaveBeenCalled();
   });
 
   it('should call the moveGenerator if we want to move an application', async () => {
@@ -160,7 +160,7 @@ describe('move generator', () => {
       .mockReturnValue(Promise.resolve(appName));
 
     jest
-      .spyOn(contextPrompts, 'contextPrompt')
+      .spyOn(contextPrompts, 'scopePrompt')
       .mockImplementation(() => Promise.resolve(context));
 
     jest
@@ -218,7 +218,7 @@ describe('move generator', () => {
       .mockReturnValue(Promise.resolve(appName));
 
     jest
-      .spyOn(contextPrompts, 'contextPrompt')
+      .spyOn(contextPrompts, 'scopePrompt')
       .mockImplementation(() => Promise.resolve(context));
 
     jest
@@ -272,7 +272,7 @@ describe('move generator', () => {
       .mockReturnValue(Promise.resolve(appName));
 
     jest
-      .spyOn(contextPrompts, 'contextPrompt')
+      .spyOn(contextPrompts, 'scopePrompt')
       .mockImplementation(() => Promise.resolve(context));
 
     jest
@@ -332,7 +332,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -397,7 +397,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -460,7 +460,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -523,7 +523,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -587,7 +587,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -656,7 +656,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -719,7 +719,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest
@@ -784,7 +784,7 @@ describe('move generator', () => {
         .mockReturnValue(Promise.resolve(appName));
 
       jest
-        .spyOn(contextPrompts, 'contextPrompt')
+        .spyOn(contextPrompts, 'scopePrompt')
         .mockImplementation(() => Promise.resolve(context));
 
       jest

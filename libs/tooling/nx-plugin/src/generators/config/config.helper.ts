@@ -68,7 +68,7 @@ export async function createAndGetConfigFileIfNonExisting(
   }
 
   const CONFIG_FILE = {
-    contexts: contexts || DEFAULT_CONFIG_OPTIONS.contexts,
+    contexts: contexts || DEFAULT_CONFIG_OPTIONS.scopes,
     prefix: prefix || DEFAULT_CONFIG_OPTIONS.prefix,
     appSuffix: appSuffix || DEFAULT_CONFIG_OPTIONS.appSuffix,
   };
@@ -88,15 +88,15 @@ export async function getPrefix(tree: Tree): Promise<string | undefined> {
   return prefix || DEFAULT_CONFIG_OPTIONS.prefix;
 }
 
-export async function getContexts(tree: Tree): Promise<string[] | undefined> {
-  const { contexts } = await getConfig(tree);
-  if (!contexts) {
+export async function getScopes(tree: Tree): Promise<string[] | undefined> {
+  const { scopes } = await getConfig(tree);
+  if (!scopes) {
     printWarningMessageForMissingConfigProperty(
       'contexts',
-      `[${DEFAULT_CONFIG_OPTIONS.contexts.join(', ')}]`
+      `[${DEFAULT_CONFIG_OPTIONS.scopes.join(', ')}]`
     );
   }
-  return contexts || DEFAULT_CONFIG_OPTIONS.contexts;
+  return scopes || DEFAULT_CONFIG_OPTIONS.scopes;
 }
 
 export async function getAppSuffix(tree: Tree): Promise<string | undefined> {
