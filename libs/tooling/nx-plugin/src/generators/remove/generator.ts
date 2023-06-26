@@ -5,13 +5,9 @@ import {removeGenerator} from '@nrwl/workspace';
 import {createProjectGraphAsync} from '@nx/devkit';
 
 import {projectPrompt} from '../prompts/project.prompt';
-// import validateModuleBoundaries from "../module-boundaries-validate/generator";
+import validate from "../validate/generator";
 
 import {RemoveOptions} from './schema';
-
-/* TODOS:
-  * - [ ] Cleanup scopes from eslint
-*/
 
 export default async function remove(tree: Tree, schema: RemoveOptions): Promise<() => Promise<void>> {
   const { projectName } = schema;
@@ -108,8 +104,7 @@ export default async function remove(tree: Tree, schema: RemoveOptions): Promise
     deletedProjects.forEach((p) =>
       console.log(blue('-> '), green(p))
     );
-    // TODO: Validate module boundaries
-    // await validateModuleBoundaries(tree, { fix: true });
+    await validate(tree, { fix: true });
   };
 }
 
