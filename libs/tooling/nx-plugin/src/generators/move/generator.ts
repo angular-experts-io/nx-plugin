@@ -6,7 +6,6 @@ import {blue} from "chalk";
 import typePrompt from '../prompts/type.prompt';
 import {projectPrompt} from '../prompts/project.prompt';
 import {scopePrompt} from '../prompts/scopePrompt';
-import {ScopeType} from '../model/scope-type';
 import validate from '../validate/generator';
 
 import {MoveSchema} from './schema';
