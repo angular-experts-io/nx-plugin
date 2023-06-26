@@ -38,7 +38,7 @@ export async function createAndGetConfigFileIfNonExisting(
     );
   }
 
-  let contexts;
+  let scopes;
   let prefix;
   let appSuffix;
 
@@ -48,7 +48,7 @@ export async function createAndGetConfigFileIfNonExisting(
       message: `Please enter all scopes (comma separated) you want to use in your project.
         (default: ${DEFAULT_CONFIG_OPTIONS.scopes.join(', ')})`,
     });
-    contexts = contextsPrompt.availbaleContexts ?
+    scopes = contextsPrompt.availbaleContexts ?
       contextsPrompt.availableContexts.split(',')
       : DEFAULT_CONFIG_OPTIONS.scopes;
   }
@@ -68,7 +68,7 @@ export async function createAndGetConfigFileIfNonExisting(
   }
 
   const CONFIG_FILE = {
-    contexts: contexts || DEFAULT_CONFIG_OPTIONS.scopes,
+    scopes: scopes || DEFAULT_CONFIG_OPTIONS.scopes,
     prefix: prefix || DEFAULT_CONFIG_OPTIONS.prefix,
     appSuffix: appSuffix || DEFAULT_CONFIG_OPTIONS.appSuffix,
   };
@@ -125,6 +125,6 @@ async function getConfig(tree: Tree): Promise<Config> {
   if (!configurationFileBuffer) {
     return await createAndGetConfigFileIfNonExisting(tree);
   } else {
-    return JSON.parse(configurationFileBuffer.toString()).contexts;
+    return JSON.parse(configurationFileBuffer.toString());
   }
 }

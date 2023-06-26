@@ -1,9 +1,9 @@
 import {Tree} from "@nrwl/devkit";
+import {green} from "chalk";
 
 import {createAndGetConfigFileIfNonExisting} from "../config/config.helper";
 
 import {InitSchema} from "./schema";
-import {green} from "chalk";
 
 export default async function move(tree: Tree, schema: InitSchema) {
   const {scopes, prefix, appSuffix} = schema;
