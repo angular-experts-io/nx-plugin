@@ -1,4 +1,11 @@
-import { ProjectTypes } from '../model/project-types';
+import {ProjectTypes} from '../model/project-types';
+import {getProjects} from "@nrwl/devkit";
+import {Tree} from "@nx/devkit";
+
+export function getProjectsWithoutTooling(tree: Tree) {
+  return Array.from(getProjects(tree).keys())
+    .filter(project => !project.startsWith('tooling-'));
+}
 
 export function extractName(
   projectName: string,

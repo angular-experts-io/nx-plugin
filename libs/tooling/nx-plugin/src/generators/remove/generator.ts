@@ -9,6 +9,10 @@ import {projectPrompt} from '../prompts/project.prompt';
 
 import {RemoveOptions} from './schema';
 
+/* TODOS:
+  * - [ ] Cleanup scopes from eslint
+*/
+
 export default async function remove(tree: Tree, schema: RemoveOptions): Promise<() => Promise<void>> {
   const { projectName } = schema;
   let projectToDelete;
