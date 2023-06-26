@@ -9,8 +9,8 @@ import {projectPrompt} from '../prompts/project.prompt';
 import {contextPrompt} from '../prompts/context.prompt';
 import {ScopeType} from '../model/scope-type';
 import {ProjectTypes} from '../model/project-types';
-import {extractName} from '../utils/projectname';
-// import validateModuleBoundaries from '../module-boundaries-validate/generator';
+import {extractName} from '../utils/project';
+import validate from '../validate/generator';
 import {applicationPrompt} from '../prompts/application.prompt';
 
 import {MoveSchema} from './schema';
@@ -23,7 +23,7 @@ export default async function move(tree: Tree, schema: MoveSchema) {
     projectName = await projectPrompt(tree);
   }
 
-  const angularJSON = readJson(tree, './angular.json');
+  const angularJSON = readJson(tree, './nx.json');
   const isApplication = angularJSON.projects[projectName]?.includes('apps');
 
   if (!destination) {
@@ -103,6 +103,5 @@ export default async function move(tree: Tree, schema: MoveSchema) {
   }
 
   await formatFiles(tree);
-  // TODO validate the module boundaries
-  // await validateModuleBoundaries(tree, {fix: true});
+  await validate(tree, {fix: true});
 }

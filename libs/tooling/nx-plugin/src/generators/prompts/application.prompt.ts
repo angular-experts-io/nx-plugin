@@ -3,7 +3,7 @@ import * as inquirerPrompt from 'inquirer-autocomplete-prompt';
 import {getProjects, Tree} from '@nrwl/devkit';
 import {contextPrompt} from "./context.prompt";
 
-inquirer.registerPrompt('autocomplete', inquirerPrompt);
+inquirer.registerPrompt('autocomplete', inquirerPrompt.default);
 
 export async function applicationPrompt(
   tree: Tree,

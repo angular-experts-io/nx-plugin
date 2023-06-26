@@ -9,6 +9,8 @@
     "g:app": "nx generate @ax/tooling/nx-plugin:app",
     "g:remove": "nx generate @ax/tooling/nx-plugin:remove",
     "g:remove:dry": "nx generate @ax/tooling/nx-plugin:remove --dry-run",
+    "g:init": "nx generate @ax/tooling/nx-plugin:init",
+    "g:init:dry": "nx generate @ax/tooling/nx-plugin:init --dry-run",
     "g:move": "nx generate @ax/tooling/nx-plugin:move",
     "g:move:dry": "nx generate @ax/tooling/nx-plugin:move --dry-run",
     "g:app:dry": "nx generate @ax/tooling/nx-plugin:app --dry-run",

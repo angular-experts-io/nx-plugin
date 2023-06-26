@@ -27,6 +27,11 @@
       "factory": "./src/generators/validate/generator",
       "schema": "./src/generators/validate/schema.json",
       "description": "Validate module boundaries, tags, folder structure, tsconfig aliases and selectors"
+    },
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize a brand new AX project"
     }
   }
 }

@@ -4,13 +4,13 @@ import { Tree } from '@nrwl/devkit';
 export const CONFIG_FILE_NAME = '.ax.config.json';
 
 interface Config {
-  contexts?: string[];
+  scopes?: string[];
   prefix?: string;
   appSuffix?: string;
 }
 
 const DEFAULT_CONFIG_OPTIONS: Config = {
-  contexts: ['sales', 'supply', 'production'],
+  scopes: [],
   prefix: 'my-app',
   appSuffix: 'app',
 };
@@ -25,7 +25,7 @@ export async function createAndGetConfigFileIfNonExisting(
     : null;
 
   if (
-    configFile?.contexts?.length > 0 &&
+    configFile?.scopes?.length > 0 &&
     configFile?.prefix &&
     configFile?.appSuffix
   ) {
@@ -42,15 +42,15 @@ export async function createAndGetConfigFileIfNonExisting(
   let prefix;
   let appSuffix;
 
-  if (!configFile?.contexts) {
-    const contextsPrompt = config?.contexts || await inquirer.prompt({
+  if (!configFile?.scopes) {
+    const contextsPrompt = config?.scopes || await inquirer.prompt({
       name: 'availableContexts',
-      message: `Please enter all contexts (comma separated) you want to use in your project.
-        (default: ${DEFAULT_CONFIG_OPTIONS.contexts.join(', ')})`,
+      message: `Please enter all scopes (comma separated) you want to use in your project.
+        (default: ${DEFAULT_CONFIG_OPTIONS.scopes.join(', ')})`,
     });
     contexts = contextsPrompt.availbaleContexts ?
       contextsPrompt.availableContexts.split(',')
-      : DEFAULT_CONFIG_OPTIONS.contexts;
+      : DEFAULT_CONFIG_OPTIONS.scopes;
   }
 
   if (!configFile?.prefix) {

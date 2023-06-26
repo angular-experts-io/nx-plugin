@@ -6,9 +6,9 @@ import {InitSchema} from "./schema";
 import {green} from "chalk";
 
 export default async function move(tree: Tree, schema: InitSchema) {
-  const {contexts, prefix, appSuffix} = schema;
+  const {scopes, prefix, appSuffix} = schema;
   await createAndGetConfigFileIfNonExisting(tree, {
-    contexts,
+    scopes,
     prefix,
     appSuffix
   });

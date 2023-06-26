@@ -1,5 +1,5 @@
 export interface InitSchema {
-  contexts?: string[];
+  scopes?: string[];
   prefix?: string;
   appSuffix?: string;
 }
