@@ -20,6 +20,7 @@ import { applicationGenerator } from '@nx/angular/generators';
 import { AppGeneratorSchema } from './schema';
 
 export default async function (tree: Tree, options: AppGeneratorSchema) {
+  // is this the context?
   const projectName = `${dasherize(options.name)}-app`;
   const projectRoot = `${getWorkspaceLayout(tree).appsDir}/${projectName}`;
   await applicationGenerator(tree, {
