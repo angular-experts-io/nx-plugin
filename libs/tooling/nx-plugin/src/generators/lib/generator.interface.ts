@@ -6,11 +6,11 @@ import { LibGeneratorSchema } from './schema';
 export type LibType =
   | 'feature'
   | 'pattern'
-  | 'data-access'
+  | 'state'
   | 'event'
   | 'ui'
   | 'util'
-  | 'util-fn'
+  | 'utilFn'
   | 'model';
 
 export interface NormalizedSchema extends LibGeneratorSchema {

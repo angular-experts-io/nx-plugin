@@ -1,15 +1,17 @@
-import { formatFiles, Tree } from '@nrwl/devkit';
-import { moveGenerator } from '@nrwl/workspace/generators';
+import {formatFiles, Tree} from '@nrwl/devkit';
+import {moveGenerator} from '@nrwl/workspace/generators';
 import * as inquirer from 'inquirer';
-import { blue } from 'chalk';
+import {blue} from 'chalk';
 
 import typePrompt from '../shared/prompts/type.prompt';
-import { projectPrompt } from '../shared/prompts/project.prompt';
-import { scopePrompt } from '../shared/prompts/scopePrompt';
+import {projectPrompt} from '../shared/prompts/project.prompt';
+import {scopePrompt} from '../shared/prompts/scope.prompt';
 import validate from '../validate/generator';
 
-import { MoveSchema } from './schema';
+import {MoveSchema} from './schema';
 import {addScopeToConfigFile} from "../shared/config/config.helper";
+import {extractName} from "../shared/utils/project";
+import {ProjectTypes} from "../shared/model/project-types";
 
 export default async function move(tree: Tree, schema: MoveSchema) {
   let { projectName, destination } = schema;
@@ -49,6 +51,7 @@ export default async function move(tree: Tree, schema: MoveSchema) {
       );
 
       destination = `${targetScope}/${targetType}/`;
+      const name = extractName(projectName, ProjectTypes.LIBRARY);
 
       const changeName = await inquirer.prompt({
         type: 'list',
@@ -68,6 +71,8 @@ export default async function move(tree: Tree, schema: MoveSchema) {
           message: 'Please enter a new name',
         });
         newName = targetName.value;
+      } else {
+        newName = name;
       }
       destination += newName;
     }

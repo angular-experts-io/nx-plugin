@@ -31,11 +31,11 @@ import {scopePrompt} from "../shared/prompts/scope.prompt";
 const LIB_TYPE_GENERATOR_MAP: LibTypeGeneratorMap = {
   feature: featureTypeFactory,
   pattern: patternTypeFactory,
-  'data-access': dataAccessTypeFactory,
+  state: dataAccessTypeFactory,
   event: eventTypeFactory,
   ui: uiTypeFactory,
   util: utilTypeFactory,
-  'util-fn': utilFnTypeFactory,
+  utilFn: utilFnTypeFactory,
   model: modelTypeFactory,
 };
 
