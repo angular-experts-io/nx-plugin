@@ -1,5 +1,6 @@
 import * as inquirer from 'inquirer';
 import { Tree } from '@nrwl/devkit';
+import {updateJson} from "@nx/devkit";
 
 export const CONFIG_FILE_NAME = '.ax.config.json';
 
@@ -86,6 +87,15 @@ export async function getPrefix(tree: Tree): Promise<string | undefined> {
     );
   }
   return prefix || DEFAULT_CONFIG_OPTIONS.prefix;
+}
+
+export async function addScopeToConfigFile(tree: Tree, scope: string){
+  await createAndGetConfigFileIfNonExisting(tree);
+
+  updateJson(tree, CONFIG_FILE_NAME, (json) => ({
+    ...json,
+    scopes: [...json.scopes, scope]
+  }));
 }
 
 export async function getScopes(tree: Tree): Promise<string[] | undefined> {

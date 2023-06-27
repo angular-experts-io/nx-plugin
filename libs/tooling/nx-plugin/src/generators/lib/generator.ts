@@ -44,7 +44,7 @@ async function normalizeOptions(
   options: LibGeneratorSchema
 ): Promise<NormalizedSchema> {
   const {scope} = options;
-  let libPath ;
+  let libPath;
 
   if (scope === 'customer-app') {
     libPath = await projectPrompt(tree);

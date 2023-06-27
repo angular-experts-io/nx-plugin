@@ -18,6 +18,7 @@ import {
 import { applicationGenerator } from '@nx/angular/generators';
 
 import { AppGeneratorSchema } from './schema';
+import {addScopeToConfigFile} from "../config/config.helper";
 
 export default async function (tree: Tree, options: AppGeneratorSchema) {
   // is this the context?
@@ -38,7 +39,7 @@ export default async function (tree: Tree, options: AppGeneratorSchema) {
   removeAppComponentTests(tree, pathToApp);
   // TODO this is specific to our setup, should be removed for npm lib - check with Tomas
   // updateProjectJson(tree, projectRoot);
-  addScope(tree, projectName);
+  await addScope(tree, projectName);
 
   await formatFiles(tree);
 
@@ -138,7 +139,7 @@ function removeNxWelcomeComponent(tree: Tree, pathToApp: string) {
   );
 }
 
-function addScope(tree: Tree, projectName: string) {
+async function addScope(tree: Tree, projectName: string) {
   updateJson(tree, '.eslintrc.json', (json) => {
     json.overrides
       .find((o) => o.rules['@nx/enforce-module-boundaries'])
@@ -148,15 +149,5 @@ function addScope(tree: Tree, projectName: string) {
       });
     return json;
   });
-  updateJson(
-    tree,
-    'libs/tooling/nx-plugin/src/generators/lib/schema.json',
-    (json) => {
-      json.properties.scope['x-prompt'].items.push({
-        value: projectName,
-        label: `${projectName} - used only by ${projectName}`,
-      });
-      return json;
-    }
-  );
+  await addScopeToConfigFile(tree, projectName);
 }

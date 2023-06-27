@@ -18,6 +18,18 @@
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
               },
               {
+                "sourceTag": "scope:foo-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
+              },
+              {
+                "sourceTag": "scope:foo-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
+              },
+              {
+                "sourceTag": "scope:foo-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
+              },
+              {
                 "sourceTag": "scope:gesuch-app",
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:gesuch-app"]
               },

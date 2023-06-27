@@ -1,24 +1,26 @@
-import {formatFiles, Tree} from '@nrwl/devkit';
-import {moveGenerator} from '@nrwl/workspace/generators';
+import { formatFiles, Tree } from '@nrwl/devkit';
+import { moveGenerator } from '@nrwl/workspace/generators';
 import * as inquirer from 'inquirer';
-import {blue} from "chalk";
+import { blue } from 'chalk';
 
 import typePrompt from '../prompts/type.prompt';
-import {projectPrompt} from '../prompts/project.prompt';
-import {scopePrompt} from '../prompts/scopePrompt';
+import { projectPrompt } from '../prompts/project.prompt';
+import { scopePrompt } from '../prompts/scopePrompt';
 import validate from '../validate/generator';
 
-import {MoveSchema} from './schema';
+import { MoveSchema } from './schema';
+import {addScopeToConfigFile} from "../config/config.helper";
 
 export default async function move(tree: Tree, schema: MoveSchema) {
-  let {projectName, destination} = schema;
+  let { projectName, destination } = schema;
 
   if (!projectName) {
     console.log('Choose the project you want to move');
     projectName = await projectPrompt(tree);
   }
 
-  const isApplication = projectName.endsWith('-app') || projectName.endsWith('-app-e2e');
+  const isApplication =
+    projectName.endsWith('-app') || projectName.endsWith('-app-e2e');
   let newName = '';
 
   if (!destination) {
@@ -26,17 +28,20 @@ export default async function move(tree: Tree, schema: MoveSchema) {
       const newName = await inquirer.prompt({
         type: 'input',
         name: 'name',
-        message: `Enter the new name of your applicaton?`
+        message: `Enter the new name of your applicaton?`,
       });
 
-      destination = newName.name;
+      destination = newName.name.endsWith('-app')
+        ? newName.name
+        : `${newName.name}-app`;
+
+      await addScopeToConfigFile(tree, destination);
 
     } else {
       const targetScope = await scopePrompt(
         tree,
         'Which scope do you want to move your project to'
       );
-
 
       const targetType = await typePrompt(
         tree,
@@ -45,7 +50,6 @@ export default async function move(tree: Tree, schema: MoveSchema) {
 
       destination = `${targetScope}/${targetType}/`;
 
-
       const changeName = await inquirer.prompt({
         type: 'list',
         name: 'yes',
@@ -53,8 +57,8 @@ export default async function move(tree: Tree, schema: MoveSchema) {
           name
         )} as name, or do you want to change the name?`,
         choices: [
-          {name: `Keep ${name}`, value: false},
-          {name: `Let me enter a new name`, value: true},
+          { name: `Keep ${name}`, value: false },
+          { name: `Let me enter a new name`, value: true },
         ],
       });
 
@@ -90,5 +94,5 @@ export default async function move(tree: Tree, schema: MoveSchema) {
    */
 
   await formatFiles(tree);
-  await validate(tree, {fix: true});
+  await validate(tree, { fix: true });
 }
