@@ -5,19 +5,19 @@ import * as inquirer from 'inquirer';
 import {Tree} from '@nrwl/devkit';
 
 import * as validateModuleBoundaries from '../module-boundaries-validate/generator';
-import * as applicationPrompts from '../prompts/application.prompt';
-import * as generatorUtils from '../utils/generators-angular';
-import * as projectPrompts from '../prompts/project.prompt';
-import * as contextPrompts from '../prompts/scopePrompt';
-import * as extractNameUtils from '../utils/projectname';
-import * as scopePrompts from '../prompts/scope.prompt';
-import * as configHelper from '../config/config.helper';
+import * as applicationPrompts from '../shared/prompts/application.prompt';
+import * as generatorUtils from '../shared/utils/generators-angular';
+import * as projectPrompts from '../shared/prompts/project.prompt';
+import * as contextPrompts from '../shared/prompts/scopePrompt';
+import * as extractNameUtils from '../shared/utils/projectname';
+import * as scopePrompts from '../shared/prompts/scope.prompt';
+import * as configHelper from '../shared/config/config.helper';
 import generateWorkspaceLibrary from '../lib/generator';
-import * as typePrompts from '../prompts/type.prompt';
-import {ProjectTypes} from "../model/project-types";
+import * as typePrompts from '../shared/prompts/type.prompt';
+import {ProjectTypes} from "../shared/model/project-types";
 import generateWorkspaceApp from '../app/generator';
-import {LibraryType} from '../model/library-type';
-import {ScopeType} from '../model/scope-type';
+import {LibraryType} from '../shared/model/library-type';
+import {ScopeType} from '../shared/model/scope-type';
 
 import move from './generator';
 

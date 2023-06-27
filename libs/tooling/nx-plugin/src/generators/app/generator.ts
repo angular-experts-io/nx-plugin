@@ -18,7 +18,7 @@ import {
 import { applicationGenerator } from '@nx/angular/generators';
 
 import { AppGeneratorSchema } from './schema';
-import {addScopeToConfigFile} from "../config/config.helper";
+import {addScopeToConfigFile} from "../shared/config/config.helper";
 
 export default async function (tree: Tree, options: AppGeneratorSchema) {
   // is this the context?

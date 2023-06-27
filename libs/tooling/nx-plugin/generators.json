@@ -32,6 +32,11 @@
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
       "description": "Initialize a brand new AX project"
+    },
+    "scope": {
+      "factory": "./src/generators/scope/generator",
+      "schema": "./src/generators/scope/schema.json",
+      "description": "Add a new scope to the AX config"
     }
   }
 }

@@ -7,6 +7,8 @@
     "g": "nx generate @ax/tooling/nx-plugin:lib",
     "g:dry": "nx generate @ax/tooling/nx-plugin:lib --dry-run",
     "g:app": "nx generate @ax/tooling/nx-plugin:app",
+    "g:scope": "nx generate @ax/tooling/nx-plugin:scope",
+    "g:scope:dry": "nx generate @ax/tooling/nx-plugin:scope --dry-run",
     "g:remove": "nx generate @ax/tooling/nx-plugin:remove",
     "g:remove:dry": "nx generate @ax/tooling/nx-plugin:remove --dry-run",
     "g:init": "nx generate @ax/tooling/nx-plugin:init",

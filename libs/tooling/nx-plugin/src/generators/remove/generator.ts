@@ -4,7 +4,7 @@ import {formatFiles, getProjects, ProjectGraph, Tree, updateJson,} from '@nrwl/d
 import {removeGenerator} from '@nrwl/workspace';
 import {createProjectGraphAsync} from '@nx/devkit';
 
-import {projectPrompt} from '../prompts/project.prompt';
+import {projectPrompt} from '../shared/prompts/project.prompt';
 import validate from "../validate/generator";
 
 import {RemoveOptions} from './schema';

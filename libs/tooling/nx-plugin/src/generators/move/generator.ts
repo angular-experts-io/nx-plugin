@@ -3,13 +3,13 @@ import { moveGenerator } from '@nrwl/workspace/generators';
 import * as inquirer from 'inquirer';
 import { blue } from 'chalk';
 
-import typePrompt from '../prompts/type.prompt';
-import { projectPrompt } from '../prompts/project.prompt';
-import { scopePrompt } from '../prompts/scopePrompt';
+import typePrompt from '../shared/prompts/type.prompt';
+import { projectPrompt } from '../shared/prompts/project.prompt';
+import { scopePrompt } from '../shared/prompts/scopePrompt';
 import validate from '../validate/generator';
 
 import { MoveSchema } from './schema';
-import {addScopeToConfigFile} from "../config/config.helper";
+import {addScopeToConfigFile} from "../shared/config/config.helper";
 
 export default async function move(tree: Tree, schema: MoveSchema) {
   let { projectName, destination } = schema;

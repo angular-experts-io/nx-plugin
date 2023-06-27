@@ -3,7 +3,7 @@ import * as path from 'path';
 import { formatFiles, Tree, readJson, updateJson } from '@nx/devkit';
 
 import { ValidateGeneratorSchema } from './schema';
-import {getScopes} from "../config/config.helper";
+import {getScopes} from "../shared/config/config.helper";
 
 export interface Project {
   name: string;

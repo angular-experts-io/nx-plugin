@@ -1,7 +1,7 @@
 import {Tree} from "@nrwl/devkit";
 import {green} from "chalk";
 
-import {createAndGetConfigFileIfNonExisting} from "../config/config.helper";
+import {createAndGetConfigFileIfNonExisting} from "../shared/config/config.helper";
 
 import {InitSchema} from "./schema";
 

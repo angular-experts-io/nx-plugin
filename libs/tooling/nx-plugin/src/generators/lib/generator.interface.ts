@@ -13,8 +13,6 @@ export type LibType =
   | 'util-fn'
   | 'model';
 
-export type LibScope = 'shared' | 'customer-app';
-
 export interface NormalizedSchema extends LibGeneratorSchema {
   nameDasherized: string;
   projectName: string;
