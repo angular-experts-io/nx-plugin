@@ -11,7 +11,7 @@ interface Config {
 }
 
 const DEFAULT_CONFIG_OPTIONS: Config = {
-  scopes: [],
+  scopes: ['shared'],
   prefix: 'my-app',
   appSuffix: 'app',
 };
