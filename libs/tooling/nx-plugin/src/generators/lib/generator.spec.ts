@@ -83,7 +83,7 @@ describe('lib generator', () => {
     it('should generate util-fn library', async () => {
       const options: LibGeneratorSchema = {
         name: 'example',
-        type: 'util-fn',
+        type: 'utilFn',
         scope: 'shared',
       };
       await generator(tree, options);
@@ -151,7 +151,7 @@ describe('lib generator', () => {
     it('should generate data-access library', async () => {
       const options: LibGeneratorSchema = {
         name: 'example',
-        type: 'data-access',
+        type: 'state',
         scope: 'shared',
       };
       await generator(tree, options);

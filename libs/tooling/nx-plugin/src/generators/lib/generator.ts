@@ -16,8 +16,6 @@ import {
 } from '@nx/devkit/src/utils/string-utils';
 
 import { LibGeneratorSchema } from './schema';
-import { NormalizedSchema, LibTypeGeneratorMap } from './generator.interface';
-
 import { featureTypeFactory } from './types/feature';
 import { patternTypeFactory } from './types/pattern';
 import { dataAccessTypeFactory } from './types/data-access';
@@ -26,6 +24,8 @@ import { uiTypeFactory } from './types/ui';
 import { utilTypeFactory } from './types/util';
 import { utilFnTypeFactory } from './types/util-fn';
 import { modelTypeFactory } from './types/model';
+import { NormalizedSchema, LibTypeGeneratorMap } from './generator.interface';
+
 import {scopePrompt} from "../shared/prompts/scope.prompt";
 
 const LIB_TYPE_GENERATOR_MAP: LibTypeGeneratorMap = {
@@ -74,6 +74,7 @@ export default async function (tree: Tree, options: LibGeneratorSchema) {
 
   const { libGenerator, libDefaultOptions, generators, postprocess } =
     libTypeFactory(normalizedOptions);
+
   await libGenerator(tree, {
     ...libDefaultOptions,
     name: normalizedOptions.name,

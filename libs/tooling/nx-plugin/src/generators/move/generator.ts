@@ -1,7 +1,7 @@
 import {formatFiles, Tree} from '@nrwl/devkit';
 import {moveGenerator} from '@nrwl/workspace/generators';
 import * as inquirer from 'inquirer';
-import {blue} from 'chalk';
+import blue from 'chalk';
 
 import typePrompt from '../shared/prompts/type.prompt';
 import {projectPrompt} from '../shared/prompts/project.prompt';
