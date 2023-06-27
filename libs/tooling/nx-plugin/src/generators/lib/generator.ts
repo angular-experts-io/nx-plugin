@@ -27,6 +27,7 @@ import { utilTypeFactory } from './types/util';
 import { utilFnTypeFactory } from './types/util-fn';
 import { modelTypeFactory } from './types/model';
 import {projectPrompt} from "../prompts/project.prompt";
+import {scopePrompt} from "../prompts/scope.prompt";
 
 const LIB_TYPE_GENERATOR_MAP: LibTypeGeneratorMap = {
   feature: featureTypeFactory,
@@ -43,13 +44,17 @@ async function normalizeOptions(
   tree: Tree,
   options: LibGeneratorSchema
 ): Promise<NormalizedSchema> {
-  const {scope} = options;
+  let {scope} = options;
   let libPath;
 
-  if (scope === 'customer-app') {
+  if(!scope) {
+    scope = await scopePrompt(tree)
+  }
+
+  if (scope.endsWith('app')) {
     libPath = await projectPrompt(tree);
   } else {
-    libPath = 'shared';
+    libPath = scope;
   }
 
   const projectDirectory = `/${libPath}/${options.type}`;

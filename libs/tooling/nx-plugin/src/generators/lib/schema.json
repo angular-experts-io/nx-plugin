@@ -4,7 +4,7 @@
   "$id": "Lib",
   "title": "",
   "type": "object",
-  "required": ["name", "type", "scope"],
+  "required": ["name", "type"],
   "properties": {
     "type": {
       "type": "string",
@@ -22,8 +22,8 @@
             "label": "Pattern - eager feature, eg connection status, tracing or interceptor"
           },
           {
-            "value": "data-access",
-            "label": "Data Access - NgRx based data access (headless)"
+            "value": "state",
+            "label": "State - NgRx based data access (headless)"
           },
           {
             "value": "event",
@@ -38,7 +38,7 @@
             "label": "Util - Angular based util (service), eg validator, mapper, or logger"
           },
           {
-            "value": "util-fn",
+            "value": "utilFn",
             "label": "Util Function - TypeScript based util (function), eg data transformation or calculation"
           },
           {
@@ -51,19 +51,9 @@
     "scope": {
       "type": "string",
       "description": "The scope of the library",
-      "x-prompt": {
-        "type": "list",
-        "message": "What is the library scope?",
-        "items": [
-          {
-            "value": "shared",
-            "label": "Shared - shared by multiple app scopes"
-          },
-          {
-            "value": "foo-app",
-            "label": "foo-app - used only by foo-app"
-          }
-        ]
+      "$default": {
+        "$source": "argv",
+        "index": 0
       }
     },
     "name": {

@@ -28,7 +28,7 @@ export default async function move(tree: Tree, schema: MoveSchema) {
       const newName = await inquirer.prompt({
         type: 'input',
         name: 'name',
-        message: `Enter the new name of your applicaton?`,
+        message: `Enter the new name of your application?`,
       });
 
       destination = newName.name.endsWith('-app')

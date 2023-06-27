@@ -1,5 +1,5 @@
 {
-  "scopes": ["shared", "foo-app", "foo-app", "bar-app"],
+  "scopes": ["shared", "bar-app", "foo-app"],
   "prefix": "my-app",
   "appSuffix": "app"
 }

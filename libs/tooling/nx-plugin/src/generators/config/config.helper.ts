@@ -94,7 +94,7 @@ export async function addScopeToConfigFile(tree: Tree, scope: string){
 
   updateJson(tree, CONFIG_FILE_NAME, (json) => ({
     ...json,
-    scopes: [...json.scopes, scope]
+    scopes: [...json.scopes.filter(s => s !== scope), scope]
   }));
 }
 

@@ -3,6 +3,7 @@ import * as path from 'path';
 import { formatFiles, Tree, readJson, updateJson } from '@nx/devkit';
 
 import { ValidateGeneratorSchema } from './schema';
+import {getScopes} from "../config/config.helper";
 
 export interface Project {
   name: string;
@@ -198,12 +199,7 @@ async function validateEslintEnforceModuleBoundariesMatchesFolderStructure(
     )
   ).filter((scope) => scope !== 'tooling');
 
-  const scopesGenerator = readJson(
-    tree,
-    'libs/tooling/nx-plugin/src/generators/lib/schema.json'
-  )
-    .properties.scope['x-prompt'].items.map((i) => i.value)
-    .sort();
+  const scopesGenerator = (await getScopes(tree)).sort();
   const scopeApps = getFoldersFromTree(tree, './apps').sort();
   const scopeLibs = getFoldersFromTree(tree, './libs')
     .sort()
