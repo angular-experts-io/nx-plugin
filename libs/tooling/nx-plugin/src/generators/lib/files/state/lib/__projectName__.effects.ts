@@ -2,8 +2,6 @@ import { inject } from '@angular/core';
 import { catchError, switchMap, map } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { sharedUtilFnErrorTransformer } from "@dv/shared/util-fn/error-transformer";
-
 import { <%= classify(projectName) %>Service } from './<%= dasherize(projectName) %>.service';
 import { <%= classify(projectName) %>ApiEvents } from './<%= dasherize(projectName) %>.events';
 

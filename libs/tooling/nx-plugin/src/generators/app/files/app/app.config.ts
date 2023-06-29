@@ -1,9 +1,8 @@
 import { ApplicationConfig } from '@angular/core';
-
-import { provideSharedPatternCore } from '@dv/shared/pattern/core';
+import {provideRouter} from "@angular/router";
 
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideSharedPatternCore(appRoutes)],
+  providers: [provideRouter(appRoutes)],
 };

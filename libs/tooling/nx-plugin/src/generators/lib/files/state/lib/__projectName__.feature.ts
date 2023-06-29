@@ -1,14 +1,12 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { SharedModelError } from "@dv/shared/model/error";
-
 import { <%= classify(projectName) %>ApiEvents } from './<%= dasherize(projectName) %>.events';
 
 export interface State {
   // TODO interface should come from a model lib
   <%= camelize(name) %>s: any[];
   loading: boolean;
-  error: SharedModelError | undefined;
+  error: string | undefined;
 }
 
 const initialState: State = {

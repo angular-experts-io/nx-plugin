@@ -1,10 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { SHARED_MODEL_API_URL } from '@dv/shared/model/api';
-
 // TODO add resource url (should it come from model lib or just inline ?)
-const RESOURCE_URL = `${SHARED_MODEL_API_URL}<resource-url>`;
+const RESOURCE_URL = `REAPLACE_ME_API_URL<resource-url>`;
 
 @Injectable({ providedIn: 'root' })
 export class <%= classify(projectName) %>Service {
