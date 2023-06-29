@@ -14,10 +14,6 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:gesuch-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:gesuch-app"]
-              },
-              {
                 "sourceTag": "scope:shared",
                 "onlyDependOnLibsWithTags": ["scope:shared"]
               },

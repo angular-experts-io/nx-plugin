@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "move",
+  "title": "Angular experts move command for nx workspaces",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Name of the Project you want to move",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "destination": {
+      "type": "string",
+      "description": "destination folder where the project should be moved to",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    }
+  },
+  "required": []
+}

@@ -2,6 +2,8 @@ import chalk from 'chalk';
 import * as path from 'path';
 import { formatFiles, Tree, readJson, updateJson } from '@nx/devkit';
 
+import {getScopes} from "../shared/config/config.helper";
+
 import { ValidateGeneratorSchema } from './schema';
 
 export interface Project {
@@ -198,12 +200,7 @@ async function validateEslintEnforceModuleBoundariesMatchesFolderStructure(
     )
   ).filter((scope) => scope !== 'tooling');
 
-  const scopesGenerator = readJson(
-    tree,
-    'libs/tooling/nx-plugin/src/generators/lib/schema.json'
-  )
-    .properties.scope['x-prompt'].items.map((i) => i.value)
-    .sort();
+  const scopesGenerator = (await getScopes(tree)).sort();
   const scopeApps = getFoldersFromTree(tree, './apps').sort();
   const scopeLibs = getFoldersFromTree(tree, './libs')
     .sort()
@@ -250,12 +247,12 @@ async function validateTsconfigBaseJson(
   const tsconfigBaseJsonPaths = tsconfigBaseJson?.compilerOptions?.paths ?? {};
   const tsconfigBaseJsonPathsAsProjectNames = Object.keys(
     tsconfigBaseJsonPaths
-  ).map((path) => path.replace('@dv/', '').replace(/\//g, '-'));
+  ).map((path) => path.replace('@ax/', '').replace(/\//g, '-'));
 
   const tsconfigBaseJsonPathsWithoutProject = Object.keys(
     tsconfigBaseJsonPaths
   ).filter((path) => {
-    const projectNameFromPath = path.replace('@dv/', '').replace(/\//g, '-');
+    const projectNameFromPath = path.replace('@ax/', '').replace(/\//g, '-');
     return !libProjectNames.includes(projectNameFromPath);
   });
   if (tsconfigBaseJsonPathsWithoutProject.length > 0) {

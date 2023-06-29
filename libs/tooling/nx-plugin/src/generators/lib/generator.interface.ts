@@ -6,14 +6,12 @@ import { LibGeneratorSchema } from './schema';
 export type LibType =
   | 'feature'
   | 'pattern'
-  | 'data-access'
+  | 'state'
   | 'event'
   | 'ui'
   | 'util'
-  | 'util-fn'
+  | 'utilFn'
   | 'model';
-
-export type LibScope = 'shared' | 'customer-app';
 
 export interface NormalizedSchema extends LibGeneratorSchema {
   nameDasherized: string;

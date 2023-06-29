@@ -17,6 +17,8 @@ import {
 } from '@nx/devkit/src/utils/string-utils';
 import { applicationGenerator } from '@nx/angular/generators';
 
+import {addScope} from "../shared/config/config.helper";
+
 import { AppGeneratorSchema } from './schema';
 
 export default async function (tree: Tree, options: AppGeneratorSchema) {
@@ -35,8 +37,7 @@ export default async function (tree: Tree, options: AppGeneratorSchema) {
   const pathToApp = path.join(projectRoot, 'src', 'app');
   removeNxWelcomeComponent(tree, pathToApp);
   removeAppComponentTests(tree, pathToApp);
-  updateProjectJson(tree, projectRoot);
-  addScope(tree, projectName);
+  await createScope(tree, projectName);
 
   await formatFiles(tree);
 
@@ -53,7 +54,7 @@ export default async function (tree: Tree, options: AppGeneratorSchema) {
 function addFiles(
   tree: Tree,
   options: AppGeneratorSchema,
-  { projectName, projectRoot }: { projectName: string; projectRoot: string }
+  { projectRoot }: { projectName: string; projectRoot: string }
 ) {
   const templateOptions = {
     ...options,
@@ -71,37 +72,6 @@ function addFiles(
   }
 
   generateFiles(tree, tplPath, path.join(projectRoot, 'src'), templateOptions);
-}
-
-function updateProjectJson(tree: Tree, projectRoot: string) {
-  updateJson(tree, `${projectRoot}/project.json`, (json) => {
-    json.targets.build.options.assets = [
-      {
-        glob: '**/*',
-        input: 'libs/shared/assets/i18n/src',
-        output: 'assets/i18n',
-      },
-      {
-        glob: '**/*',
-        input: 'libs/shared/assets/images/src',
-        output: 'assets/images',
-      },
-      ...json.targets.build.options.assets,
-    ];
-    json.targets.build.options.stylePreprocessorOptions = {
-      includePaths: [
-        'libs/shared/styles/theme/src',
-        'libs/shared/styles/components/src',
-      ],
-    };
-    json.implicitDependencies = [
-      'libs/shared/assets/i18n',
-      'libs/shared/assets/images',
-      'libs/shared/styles/theme',
-      'libs/shared/styles/components',
-    ];
-    return json;
-  });
 }
 
 function removeAppComponentTests(tree: Tree, pathToApp: string) {
@@ -136,7 +106,7 @@ function removeNxWelcomeComponent(tree: Tree, pathToApp: string) {
   );
 }
 
-function addScope(tree: Tree, projectName: string) {
+async function createScope(tree: Tree, projectName: string) {
   updateJson(tree, '.eslintrc.json', (json) => {
     json.overrides
       .find((o) => o.rules['@nx/enforce-module-boundaries'])
@@ -146,15 +116,5 @@ function addScope(tree: Tree, projectName: string) {
       });
     return json;
   });
-  updateJson(
-    tree,
-    'libs/tooling/nx-plugin/src/generators/lib/schema.json',
-    (json) => {
-      json.properties.scope['x-prompt'].items.push({
-        value: projectName,
-        label: `${projectName} - used only by ${projectName}`,
-      });
-      return json;
-    }
-  );
+  await addScope(tree, projectName);
 }

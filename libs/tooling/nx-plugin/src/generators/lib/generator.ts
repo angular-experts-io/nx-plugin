@@ -16,8 +16,6 @@ import {
 } from '@nx/devkit/src/utils/string-utils';
 
 import { LibGeneratorSchema } from './schema';
-import { NormalizedSchema, LibTypeGeneratorMap } from './generator.interface';
-
 import { featureTypeFactory } from './types/feature';
 import { patternTypeFactory } from './types/pattern';
 import { dataAccessTypeFactory } from './types/data-access';
@@ -26,29 +24,39 @@ import { uiTypeFactory } from './types/ui';
 import { utilTypeFactory } from './types/util';
 import { utilFnTypeFactory } from './types/util-fn';
 import { modelTypeFactory } from './types/model';
+import { NormalizedSchema, LibTypeGeneratorMap } from './generator.interface';
+
+import {scopePrompt} from "../shared/prompts/scope.prompt";
 
 const LIB_TYPE_GENERATOR_MAP: LibTypeGeneratorMap = {
   feature: featureTypeFactory,
   pattern: patternTypeFactory,
-  'data-access': dataAccessTypeFactory,
+  state: dataAccessTypeFactory,
   event: eventTypeFactory,
   ui: uiTypeFactory,
   util: utilTypeFactory,
-  'util-fn': utilFnTypeFactory,
+  utilFn: utilFnTypeFactory,
   model: modelTypeFactory,
 };
 
-function normalizeOptions(
+async function normalizeOptions(
   tree: Tree,
   options: LibGeneratorSchema
-): NormalizedSchema {
-  const projectDirectory = `/${options.scope}/${options.type}`;
+): Promise<NormalizedSchema> {
+  let {scope} = options;
+
+  if(!scope) {
+    scope = await scopePrompt(tree)
+  }
+
+  const projectDirectory = `/${scope}/${options.type}`;
   const nameDasherized = dasherize(options.name);
-  const projectName = `${options.scope}-${options.type}-${nameDasherized}`;
+  const projectName = `${scope}-${options.type}-${nameDasherized}`;
   const projectRoot = `${getWorkspaceLayout(tree).libsDir}${projectDirectory}`;
-  const parsedTags = [`type:${options.type}`, `scope:${options.scope}`];
+  const parsedTags = [`type:${options.type}`, `scope:${scope}`];
 
   return {
+    scope,
     ...options,
     nameDasherized,
     projectName,
@@ -59,12 +67,14 @@ function normalizeOptions(
 }
 
 export default async function (tree: Tree, options: LibGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  const { type, scope } = normalizedOptions;
+  const normalizedOptions = await normalizeOptions(tree, options);
+  const { type } = normalizedOptions;
+
   const libTypeFactory = LIB_TYPE_GENERATOR_MAP[type];
 
   const { libGenerator, libDefaultOptions, generators, postprocess } =
     libTypeFactory(normalizedOptions);
+
   await libGenerator(tree, {
     ...libDefaultOptions,
     name: normalizedOptions.name,
