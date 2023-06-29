@@ -14,44 +14,12 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
+                "sourceTag": "scope:baz-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:baz-app"]
               },
               {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:bar-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:bar-app"]
-              },
-              {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:foo-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:foo-app"]
-              },
-              {
-                "sourceTag": "scope:gesuch-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:gesuch-app"]
+                "sourceTag": "scope:orders-app",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:orders-app"]
               },
               {
                 "sourceTag": "scope:shared",

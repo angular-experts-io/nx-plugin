@@ -9,7 +9,7 @@ import {scopePrompt} from '../shared/prompts/scope.prompt';
 import validate from '../validate/generator';
 
 import {MoveSchema} from './schema';
-import {addScopeToConfigFile} from "../shared/config/config.helper";
+import {addScope} from "../shared/config/config.helper";
 import {extractName} from "../shared/utils/project";
 import {ProjectTypes} from "../shared/model/project-types";
 
@@ -37,7 +37,7 @@ export default async function move(tree: Tree, schema: MoveSchema) {
         ? newName.name
         : `${newName.name}-app`;
 
-      await addScopeToConfigFile(tree, destination);
+      await addScope(tree, destination);
 
     } else {
       const targetScope = await scopePrompt(
@@ -84,19 +84,6 @@ export default async function move(tree: Tree, schema: MoveSchema) {
     updateImportPath: true,
     skipFormat: true,
   });
-
-  /*
-  if (!isApplication) {
-    await updateJson(
-      tree,
-      `libs/${destination}/ng-package.json`,
-      (projectJson) => {
-        projectJson.dest = `../../../../../dist/libs/${destination}`;
-        return projectJson;
-      }
-    );
-  }
-   */
 
   await formatFiles(tree);
   await validate(tree, { fix: true });

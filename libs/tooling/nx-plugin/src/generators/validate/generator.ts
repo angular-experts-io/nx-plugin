@@ -246,12 +246,12 @@ async function validateTsconfigBaseJson(
   const tsconfigBaseJsonPaths = tsconfigBaseJson?.compilerOptions?.paths ?? {};
   const tsconfigBaseJsonPathsAsProjectNames = Object.keys(
     tsconfigBaseJsonPaths
-  ).map((path) => path.replace('@dv/', '').replace(/\//g, '-'));
+  ).map((path) => path.replace('@ax/', '').replace(/\//g, '-'));
 
   const tsconfigBaseJsonPathsWithoutProject = Object.keys(
     tsconfigBaseJsonPaths
   ).filter((path) => {
-    const projectNameFromPath = path.replace('@dv/', '').replace(/\//g, '-');
+    const projectNameFromPath = path.replace('@ax/', '').replace(/\//g, '-');
     return !libProjectNames.includes(projectNameFromPath);
   });
   if (tsconfigBaseJsonPathsWithoutProject.length > 0) {

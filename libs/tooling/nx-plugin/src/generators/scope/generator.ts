@@ -2,7 +2,7 @@ import {Tree} from "@nrwl/devkit";
 import * as inquirer from "inquirer";
 import {green} from "chalk";
 
-import {addScopeToConfigFile} from "../shared/config/config.helper";
+import {addScope} from "../shared/config/config.helper";
 import {ScopeOptions} from "./schema";
 
 export default async function remove(tree: Tree, schema: ScopeOptions): Promise<() => Promise<void>> {
@@ -16,7 +16,7 @@ export default async function remove(tree: Tree, schema: ScopeOptions): Promise<
     scope = scopePrompt.newScope;
   }
 
-  await addScopeToConfigFile(tree, scope);
+  await addScope(tree, scope);
 
   return async () => {
     console.log(

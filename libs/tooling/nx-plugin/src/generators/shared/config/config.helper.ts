@@ -89,7 +89,7 @@ export async function getPrefix(tree: Tree): Promise<string | undefined> {
   return prefix || DEFAULT_CONFIG_OPTIONS.prefix;
 }
 
-export async function addScopeToConfigFile(tree: Tree, scope: string){
+export async function addScope(tree: Tree, scope: string){
   await createAndGetConfigFileIfNonExisting(tree);
 
   updateJson(tree, CONFIG_FILE_NAME, (json) => ({
