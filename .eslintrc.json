@@ -14,14 +14,6 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:baz-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:baz-app"]
-              },
-              {
-                "sourceTag": "scope:orders-app",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:orders-app"]
-              },
-              {
                 "sourceTag": "scope:shared",
                 "onlyDependOnLibsWithTags": ["scope:shared"]
               },
