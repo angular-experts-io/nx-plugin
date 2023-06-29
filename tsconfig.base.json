@@ -17,7 +17,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ax/shared/ui/datepicker": ["libs/shared/ui/datepicker/src/index.ts"],
       "@ax/tooling/nx-plugin": ["libs/tooling/nx-plugin/src/index.ts"]
     }
   },
