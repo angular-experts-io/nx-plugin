@@ -3,6 +3,7 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 
 import generator from './generator';
 import { ValidateGeneratorSchema } from './schema';
+import * as configHelper from "../shared/config/config.helper";
 
 // sanity tests, for generators it's better to keep it open and flexible to allow easy extension
 // and adjustment of the logic in the future
@@ -13,6 +14,7 @@ describe('validate generator', () => {
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
     tree.write('.gitignore', '');
+    jest.spyOn(configHelper, 'getScopes').mockImplementation(() => Promise.resolve(['shared']));
   });
 
   it('fixes out of sync tags', async () => {

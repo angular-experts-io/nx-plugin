@@ -2,8 +2,9 @@ import chalk from 'chalk';
 import * as path from 'path';
 import { formatFiles, Tree, readJson, updateJson } from '@nx/devkit';
 
-import { ValidateGeneratorSchema } from './schema';
 import {getScopes} from "../shared/config/config.helper";
+
+import { ValidateGeneratorSchema } from './schema';
 
 export interface Project {
   name: string;

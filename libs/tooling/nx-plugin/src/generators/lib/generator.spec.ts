@@ -147,8 +147,8 @@ describe('lib generator', () => {
     });
   });
 
-  describe('data-access', () => {
-    it('should generate data-access library', async () => {
+  describe('state', () => {
+    it('should generate state library', async () => {
       const options: LibGeneratorSchema = {
         name: 'example',
         type: 'state',
@@ -157,18 +157,18 @@ describe('lib generator', () => {
       await generator(tree, options);
       const config = readProjectConfiguration(
         tree,
-        'shared-data-access-example'
+        'shared-state-example'
       );
       expect(config).toBeDefined();
       expect(
-        tree.exists('libs/shared/data-access/example/package.json')
+        tree.exists('libs/shared/state/example/package.json')
       ).toBeFalsy();
       expect(
-        tree.exists('libs/shared/data-access/example/README.md')
+        tree.exists('libs/shared/state/example/README.md')
       ).toBeFalsy();
       expect(
         tree.exists(
-          'libs/shared/data-access/example/src/lib/shared-data-access-example.actions.ts'
+          'libs/shared/state/example/src/lib/shared-state-example.actions.ts'
         )
       ).toBeFalsy();
     });

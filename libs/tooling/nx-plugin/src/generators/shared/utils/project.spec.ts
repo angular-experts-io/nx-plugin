@@ -1,4 +1,4 @@
-import {extractName} from "./projectname";
+import {extractName} from "./project";
 import {ProjectTypes} from "../model/project-types";
 
 describe('Project name utils', () => {
@@ -11,9 +11,7 @@ describe('Project name utils', () => {
 
   it('should extract the correct name of a library', () => {
     expect(
-      extractName('foo-shared-model-football', ProjectTypes.LIBRARY)
+      extractName('shared-model-football', ProjectTypes.LIBRARY)
     ).toBe('football');
   });
-
-
 });
