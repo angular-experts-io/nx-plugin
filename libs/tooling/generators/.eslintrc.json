@@ -1,12 +1,10 @@
 {
   "extends": ["../../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "src/generators/lib/files/**/*.*"],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nx/enforce-module-boundaries": [0]
-      }
+      "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx"],

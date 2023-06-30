@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'tooling-nx-plugin',
+  displayName: 'tooling-generators',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  modulePathIgnorePatterns: ['<rootDir>/src/generators/lib/files'],
+  coverageDirectory: '../../../coverage/libs/tooling/generators',
 };

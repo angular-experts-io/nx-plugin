@@ -17,6 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ax/nx-plugin-generators": ["libs/tooling/generators/src/index.ts"],
       "@ax/tooling/nx-plugin": ["libs/tooling/nx-plugin/src/index.ts"],
       "@ax/validators": ["libs/tooling/validators/src/index.ts"]
     }
