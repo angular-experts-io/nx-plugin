@@ -1,17 +1,17 @@
-import {formatFiles, Tree} from '@nrwl/devkit';
 import {moveGenerator} from '@nrwl/workspace/generators';
+import {formatFiles, Tree} from '@nrwl/devkit';
+import {validate} from "@ax/validators";
 import * as inquirer from 'inquirer';
 import blue from 'chalk';
 
-import typePrompt from '../shared/prompts/type.prompt';
 import {projectPrompt} from '../shared/prompts/project.prompt';
+import {ProjectTypes} from "../shared/model/project-types";
 import {scopePrompt} from '../shared/prompts/scope.prompt';
-import validate from '../validate/generator';
+import {addScope} from "../shared/config/config.helper";
+import typePrompt from '../shared/prompts/type.prompt';
+import {extractName} from "../shared/utils/project";
 
 import {MoveSchema} from './schema';
-import {addScope} from "../shared/config/config.helper";
-import {extractName} from "../shared/utils/project";
-import {ProjectTypes} from "../shared/model/project-types";
 
 export default async function move(tree: Tree, schema: MoveSchema) {
   let { projectName, destination } = schema;
