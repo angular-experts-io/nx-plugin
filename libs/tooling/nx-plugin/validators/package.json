@@ -2,5 +2,8 @@
   "name": "@ax/nx-plugin-validators",
   "version": "0.0.1",
   "type": "commonjs",
-  "generators": "./generators.json"
+  "generators": "./generators.json",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
 }

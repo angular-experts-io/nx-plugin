@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import * as path from 'path';
-import { formatFiles, Tree, readJson, updateJson } from '@nx/devkit';
+import { formatFiles, readJson, Tree, updateJson } from '@nx/devkit';
 
-import { getScopes } from '../shared/config/config.helper';
+import { getScopes } from '@ax/tooling/nx-plugin/config';
 
 import { ValidateGeneratorSchema } from './schema';
 
@@ -39,8 +39,8 @@ export default async function validate(
         !n.startsWith('shared-assets')
     );
 
-  const aggregateViolations = [];
-  const aggregateFixes = [];
+  const aggregateViolations: string[] = [];
+  const aggregateFixes: string[] = [];
 
   for (const project of projects) {
     const { violations, fixes } = await validateProjectTagsMatchProjectLocation(
@@ -88,7 +88,7 @@ async function validateSelectors(tree: Tree, project: Project) {
     return [];
   }
 
-  const incorrectSelectors = [];
+  const incorrectSelectors: { filePath: string; selector: string }[] = [];
   const { name: projectName, path: projectPath } = project;
   const [, scope, type, name] = projectPath.split(path.sep);
   const projectJson = await readJson(tree, projectPath);
@@ -102,21 +102,27 @@ async function validateSelectors(tree: Tree, project: Project) {
     /(component|pipe|directive)\.ts$/
   ).forEach((filePath) => {
     const fileContent = tree.read(filePath, 'utf-8');
-    const selectors = Array.from(
-      fileContent.matchAll(/selector:\s*'(?<selector>.*)'/g)
-    ).map((match) => match.groups?.selector);
-    selectors.forEach((selector) => {
-      const normalizedSelector = selector.replace(/-/g, '').toLowerCase();
-      const normalizedNamespace = `${scope}${type}${name}`
-        .replace(/-/g, '')
-        .toLowerCase();
-      if (!normalizedSelector.includes(normalizedNamespace)) {
-        incorrectSelectors.push({
-          filePath,
-          selector,
-        });
-      }
-    });
+    const selectors =
+      fileContent &&
+      Array.from(fileContent.matchAll(/selector:\s*'(?<selector>.*)'/g)).map(
+        (match) => match.groups?.['selector']
+      );
+
+    selectors &&
+      selectors.forEach((selector) => {
+        if (selector) {
+          const normalizedSelector = selector?.replace(/-/g, '').toLowerCase();
+          const normalizedNamespace = `${scope}${type}${name}`
+            .replace(/-/g, '')
+            .toLowerCase();
+          if (!normalizedSelector?.includes(normalizedNamespace)) {
+            incorrectSelectors.push({
+              filePath,
+              selector,
+            });
+          }
+        }
+      });
   });
 
   if (incorrectSelectors.length) {
@@ -141,14 +147,14 @@ async function validateProjectTagsMatchProjectLocation(
   project: Project,
   fix = false
 ): Promise<Result> {
-  const violations = [];
-  const fixes = [];
+  const violations: string[] = [];
+  const fixes: string[] = [];
 
   const { name, path: projectPath } = project;
   const [appsOrLibs, scopeOrName, type] = projectPath.split(path.sep);
-  const projectJson: any = await readJson(tree, projectPath);
+  const projectJson = await readJson(tree, projectPath);
   const tags: string[] = projectJson?.tags ?? [];
-  const expectedTags = [];
+  const expectedTags: string[] = [];
   if (appsOrLibs === 'apps') {
     if (!scopeOrName.endsWith('-e2e')) {
       expectedTags.push(`type:app`, `scope:${scopeOrName}`);
@@ -187,20 +193,21 @@ Difference: ${chalk.inverse(tagsDiff.join(', '))}`);
 async function validateEslintEnforceModuleBoundariesMatchesFolderStructure(
   tree: Tree
 ): Promise<string[]> {
-  const violations = [];
+  const violations: string[] = [];
   const moduleBoundaries = await getModuleBoundaries(tree);
   const relevantBoundaries = moduleBoundaries.filter((item) =>
     ['scope:'].some((prefix) => item.sourceTag.startsWith(prefix))
   );
   const scopes = Array.from(
-    new Set(
+    new Set<string>(
       relevantBoundaries
         .filter((item) => item.sourceTag.startsWith('scope:'))
         .map((item) => item.sourceTag.split(':')[1])
     )
   ).filter((scope) => scope !== 'tooling');
 
-  const scopesGenerator = (await getScopes(tree)).sort();
+  const scopesFromConfig  = (await getScopes(tree));
+  const scopesGenerator = scopesFromConfig ? scopesFromConfig.sort() : [];
   const scopeApps = getFoldersFromTree(tree, './apps').sort();
   const scopeLibs = getFoldersFromTree(tree, './libs')
     .sort()
@@ -242,7 +249,7 @@ async function validateTsconfigBaseJson(
   tree: Tree,
   libProjectNames: string[]
 ): Promise<string[]> {
-  const violations = [];
+  const violations: string[] = [];
   const tsconfigBaseJson = await readJson(tree, './tsconfig.base.json');
   const tsconfigBaseJsonPaths = tsconfigBaseJson?.compilerOptions?.paths ?? {};
   const tsconfigBaseJsonPathsAsProjectNames = Object.keys(
@@ -293,16 +300,15 @@ async function getModuleBoundaries(tree: Tree) {
 
 function getFoldersFromTree(tree: Tree, path: string) {
   const IGNORE = ['.gitkeep'];
-  const folders = tree
+  return tree
     .children(path)
     .filter(
       (path) =>
         !IGNORE.some((ignore) => path.includes(ignore)) && !tree.isFile(path)
     );
-  return folders;
 }
 
-function diff(a: any[], b: any[]) {
+function diff(a: string[], b: string[]) {
   return Array.from(
     new Set(
       a

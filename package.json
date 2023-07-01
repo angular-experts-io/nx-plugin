@@ -26,6 +26,8 @@
     "test": "nx run-many --target=test",
     "e2e": "nx run-many --target=e2e",
     "build": "nx run-many --target=build",
+    "build:generators": "nx build --project tooling-nx-plugin-generators",
+    "build:validators": "nx build --project tooling-nx-plugin-validators",
     "format:test": "nx format:check --all",
     "format:write": "nx format:write --all"
   },

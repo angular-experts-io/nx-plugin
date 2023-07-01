@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@ax/tooling/nx-plugin": ["libs/tooling/nx-plugin/src/index.ts"],
+      "@ax/tooling/nx-plugin/config": ["libs/tooling/nx-plugin/config/src/index.ts"],
       "@ax/tooling/nx-plugin/generators": ["libs/tooling/nx-plugin/generators/src/index.ts"],
       "@ax/tooling/nx-plugin/validators": ["libs/tooling/nx-plugin/validators/src/index.ts"]
     }
