@@ -1,0 +1,11 @@
+{
+  "name": "@ax/tooling/nx-plugin/config",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "dependencies": {
+    "inquirer": "^8.2.5"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.6"
+  }
+}

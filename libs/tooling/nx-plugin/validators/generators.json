@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "validate": {
+      "factory": "./src/generators/validate/generator",
+      "schema": "./src/generators/validate/schema.json",
+      "description": "validate generator"
+    }
+  }
+}
