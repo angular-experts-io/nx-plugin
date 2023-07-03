@@ -5,7 +5,7 @@ import { libraryGenerator } from '@nx/angular/generators';
 import { NormalizedSchema, LibTypeGenerator } from '../generator.interface';
 import { extendEslintJson } from './helpers/eslint';
 
-export function uiTypeFactory(options: NormalizedSchema): LibTypeGenerator {
+export function uiTypeFactory(): LibTypeGenerator {
   return {
     libGenerator: libraryGenerator,
     libDefaultOptions: {

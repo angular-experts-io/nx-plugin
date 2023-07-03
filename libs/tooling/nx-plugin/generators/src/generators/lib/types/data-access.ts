@@ -5,9 +5,7 @@ import { libraryGenerator } from '@nx/angular/generators';
 import { NormalizedSchema, LibTypeGenerator } from '../generator.interface';
 import { extendEslintJson } from './helpers/eslint';
 
-export function dataAccessTypeFactory(
-  options: NormalizedSchema
-): LibTypeGenerator {
+export function dataAccessTypeFactory(): LibTypeGenerator {
   return {
     libGenerator: libraryGenerator,
     libDefaultOptions: { skipModule: true },

@@ -1,20 +1,21 @@
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { formatFiles, Tree } from '@nrwl/devkit';
 import { validate } from '@ax/tooling/nx-plugin/validators';
-import * as inquirer from 'inquirer';
+import inquirer from 'inquirer';
 import blue from 'chalk';
+
+import {addScope} from "@ax/tooling/nx-plugin/config";
 
 import { projectPrompt } from '../shared/prompts/project.prompt';
 import { ProjectTypes } from '../shared/model/project-types';
 import { scopePrompt } from '../shared/prompts/scope.prompt';
-import { addScope } from '../shared/config/config.helper';
 import typePrompt from '../shared/prompts/type.prompt';
 import { extractName } from '../shared/utils/project';
 
 import { MoveSchema } from './schema';
 
 export default async function move(tree: Tree, schema: MoveSchema) {
-  let { projectName, destination } = schema;
+  let { projectName, destination = '' } = schema;
 
   if (!projectName) {
     console.log('Choose the project you want to move');

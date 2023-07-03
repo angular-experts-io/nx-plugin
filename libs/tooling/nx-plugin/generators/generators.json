@@ -23,11 +23,6 @@
       "schema": "./src/generators/remove/schema.json",
       "description": "Remove an existing application from the workspace"
     },
-    "validate": {
-      "factory": "./src/generators/validate/generator",
-      "schema": "./src/generators/validate/schema.json",
-      "description": "Validate module boundaries, tags, folder structure, tsconfig aliases and selectors"
-    },
     "init": {
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",

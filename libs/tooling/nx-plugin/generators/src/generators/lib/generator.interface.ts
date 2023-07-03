@@ -1,4 +1,4 @@
-import { Tree } from '@nx/devkit';
+import {GeneratorCallback, Tree} from '@nx/devkit';
 import { Generator } from 'nx/src/config/misc-interfaces';
 
 import { LibGeneratorSchema } from './schema';
@@ -26,7 +26,7 @@ export interface DefaultOptions {
 }
 
 export interface LibTypeGenerator {
-  libGenerator: Generator;
+  libGenerator: (tree: Tree, schema: any) => Promise<GeneratorCallback>;
   libDefaultOptions: DefaultOptions;
   generators: { generator: Generator; defaultOptions: DefaultOptions }[];
   postprocess(tree: Tree, options: NormalizedSchema): void;

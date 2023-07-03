@@ -2,7 +2,8 @@ import { Tree } from '@nrwl/devkit';
 import * as inquirer from 'inquirer';
 import { green } from 'chalk';
 
-import { addScope } from '../shared/config/config.helper';
+import {addScope} from "@ax/tooling/nx-plugin/config";
+
 import { ScopeOptions } from './schema';
 
 export default async function remove(

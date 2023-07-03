@@ -1,6 +1,5 @@
 import * as inquirer from 'inquirer';
-import { Tree } from '@nrwl/devkit';
-import { updateJson } from '@nx/devkit';
+import { updateJson, Tree } from '@nx/devkit';
 
 export const CONFIG_FILE_NAME = '.ax.config.json';
 

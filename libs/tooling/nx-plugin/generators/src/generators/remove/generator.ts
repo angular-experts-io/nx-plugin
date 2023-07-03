@@ -11,7 +11,8 @@ import { removeGenerator } from '@nrwl/workspace';
 import { createProjectGraphAsync } from '@nx/devkit';
 
 import { projectPrompt } from '../shared/prompts/project.prompt';
-import validate from '../validate/generator';
+
+import {validate} from "@ax/tooling/nx-plugin/validators";
 
 import { RemoveOptions } from './schema';
 

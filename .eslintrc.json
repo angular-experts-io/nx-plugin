@@ -4,7 +4,7 @@
   "plugins": ["@nx"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["(!tooling)/**/*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -14,16 +14,8 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:tooling",
-                "onlyDependOnLibsWithTags": ["scope:tooling"]
-              },
-              {
                 "sourceTag": "scope:shared",
                 "onlyDependOnLibsWithTags": ["scope:shared"]
-              },
-              {
-                "sourceTag": "scope:tooling",
-                "onlyDependOnLibsWithTags": ["scope:tooling"]
               },
               {
                 "sourceTag": "type:app",

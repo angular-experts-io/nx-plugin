@@ -17,7 +17,7 @@ import {
 } from '@nx/devkit/src/utils/string-utils';
 import { applicationGenerator } from '@nx/angular/generators';
 
-import { addScope } from '../shared/config/config.helper';
+import {addScope} from "@ax/tooling/nx-plugin/config";
 
 import { AppGeneratorSchema } from './schema';
 
@@ -82,34 +82,41 @@ function removeNxWelcomeComponent(tree: Tree, pathToApp: string) {
   tree.delete(path.join(pathToApp, 'nx-welcome.component.ts'));
   const appComponentContent = tree
     .read(path.join(pathToApp, 'app.component.ts'))
-    .toString();
-  tree.write(
-    path.join(pathToApp, 'app.component.ts'),
-    appComponentContent
-      .replace('NxWelcomeComponent,', '')
-      .replace(
-        "import { NxWelcomeComponent } from './nx-welcome.component';",
-        ''
-      )
-  );
+    ?.toString();
+
+  if(appComponentContent){
+    tree.write(
+      path.join(pathToApp, 'app.component.ts'),
+      appComponentContent
+        .replace('NxWelcomeComponent,', '')
+        .replace(
+          "import { NxWelcomeComponent } from './nx-welcome.component';",
+          ''
+        )
+    );
+  }
+
   const appComponentSpecContent = tree
     .read(path.join(pathToApp, 'app.component.spec.ts'))
-    .toString();
-  tree.write(
-    path.join(pathToApp, 'app.component.spec.ts'),
-    appComponentSpecContent
-      .replace('NxWelcomeComponent,', '')
-      .replace(
-        "import { NxWelcomeComponent } from './nx-welcome.component';",
-        ''
-      )
-  );
+    ?.toString();
+
+  if(appComponentSpecContent){
+    tree.write(
+      path.join(pathToApp, 'app.component.spec.ts'),
+      appComponentSpecContent
+        .replace('NxWelcomeComponent,', '')
+        .replace(
+          "import { NxWelcomeComponent } from './nx-welcome.component';",
+          ''
+        )
+    );
+  }
 }
 
 async function createScope(tree: Tree, projectName: string) {
   updateJson(tree, '.eslintrc.json', (json) => {
     json.overrides
-      .find((o) => o.rules['@nx/enforce-module-boundaries'])
+      .find((o: any) => o.rules['@nx/enforce-module-boundaries'])
       .rules['@nx/enforce-module-boundaries'][1].depConstraints.unshift({
         sourceTag: `scope:${projectName}`,
         onlyDependOnLibsWithTags: ['scope:shared', `scope:${projectName}`],

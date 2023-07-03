@@ -50,12 +50,14 @@ function postprocess(tree: Tree, options: NormalizedSchema) {
     'src',
     'index.ts'
   );
-  const indexTsContent = tree.read(pathToIndex).toString();
-  tree.write(
-    pathToIndex,
-    indexTsContent.replace(
-      'lib/lib.routes',
-      `lib/${options.projectName}.routes`
-    )
-  );
+  const indexTsContent = tree.read(pathToIndex)?.toString();
+  if(indexTsContent){
+    tree.write(
+      pathToIndex,
+      indexTsContent.replace(
+        'lib/lib.routes',
+        `lib/${options.projectName}.routes`
+      )
+    );
+  }
 }

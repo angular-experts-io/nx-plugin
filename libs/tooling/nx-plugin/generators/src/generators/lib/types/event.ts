@@ -4,7 +4,7 @@ import { libraryGenerator } from '@nx/js';
 
 import { LibTypeGenerator, NormalizedSchema } from '../generator.interface';
 
-export function eventTypeFactory(options: NormalizedSchema): LibTypeGenerator {
+export function eventTypeFactory(): LibTypeGenerator {
   return {
     libGenerator: libraryGenerator,
     libDefaultOptions: {
