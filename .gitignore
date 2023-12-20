@@ -5,7 +5,7 @@ dist
 tmp
 /out-tsc
 /dv-example/
-.nx
+.nx/
 
 # dependencies
 node_modules
