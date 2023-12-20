@@ -94,6 +94,12 @@
   },
   "nxJsonPlugins": [],
   "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "18201737436483772103"
+      }
+    ],
     "projectFileMap": {
       "tooling-nx-plugin-config": [
         {
@@ -147,6 +153,227 @@
         {
           "file": "libs/tooling/nx-plugin/config/tsconfig.spec.json",
           "hash": "12676338339107966475"
+        }
+      ],
+      "tooling-nx-plugin-validators": [
+        {
+          "file": "libs/tooling/nx-plugin/validators/.eslintrc.json",
+          "hash": "4060609842899411029"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/README.md",
+          "hash": "10808454116467325009"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/generators.json",
+          "hash": "1521044451708123978"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/jest.config.ts",
+          "hash": "10551295982115216078"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/package-lock.json",
+          "hash": "9526950535647397701"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/package.json",
+          "hash": "2381165151099912703",
+          "deps": [
+            "npm:chalk"
+          ]
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/project.json",
+          "hash": "5333715124941086772"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/generator.spec.ts",
+          "hash": "3775989106480202960",
+          "deps": [
+            "npm:@nx/devkit",
+            "tooling-nx-plugin-config"
+          ]
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/generator.ts",
+          "hash": "7671751012756824637",
+          "deps": [
+            "npm:chalk",
+            "npm:path",
+            "npm:@nx/devkit",
+            "tooling-nx-plugin-config"
+          ]
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/schema.d.ts",
+          "hash": "5819220933278268906"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/schema.json",
+          "hash": "66282947766089941"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/src/index.ts",
+          "hash": "1396666921406885142"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/tsconfig.json",
+          "hash": "18017263261948858813"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/tsconfig.lib.json",
+          "hash": "5419457303262888731"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/validators/tsconfig.spec.json",
+          "hash": "12676338339107966475"
+        }
+      ],
+      "ax-nx-plugin-workspace": [
+        {
+          "file": ".ax.config.json",
+          "hash": "1340829166436045723"
+        },
+        {
+          "file": ".editorconfig",
+          "hash": "5443105041930014821"
+        },
+        {
+          "file": ".eslintignore",
+          "hash": "7663861978715868291"
+        },
+        {
+          "file": ".eslintrc-angular.json",
+          "hash": "14242169620473342076"
+        },
+        {
+          "file": ".eslintrc-ngrx.json",
+          "hash": "4128046395051612814"
+        },
+        {
+          "file": ".eslintrc.json",
+          "hash": "11574629289848961625"
+        },
+        {
+          "file": ".github/workflows/ci.yml",
+          "hash": "12945670883121043129"
+        },
+        {
+          "file": ".github/workflows/release.yml",
+          "hash": "10092510407796624812"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "3583689735365856263"
+        },
+        {
+          "file": ".npmrc",
+          "hash": "806553954559008599"
+        },
+        {
+          "file": ".prettierignore",
+          "hash": "16479312547820070036"
+        },
+        {
+          "file": ".prettierrc",
+          "hash": "8130880107294852815"
+        },
+        {
+          "file": ".verdaccio/config.yml",
+          "hash": "18364357067868980959"
+        },
+        {
+          "file": ".verdaccio/htpasswd",
+          "hash": "18438619983611958715"
+        },
+        {
+          "file": "README.md",
+          "hash": "2428966330377374428"
+        },
+        {
+          "file": "apps/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "docs/README.md",
+          "hash": "2310841811663877147"
+        },
+        {
+          "file": "docs/architecture.excalidraw",
+          "hash": "12540513505371868476"
+        },
+        {
+          "file": "docs/architecture.png",
+          "hash": "13139230679049872771"
+        },
+        {
+          "file": "docs/selectors.excalidraw",
+          "hash": "15954424021334929527"
+        },
+        {
+          "file": "docs/selectors.png",
+          "hash": "16523618057021746464"
+        },
+        {
+          "file": "docs/types.excalidraw",
+          "hash": "9900857568212363017"
+        },
+        {
+          "file": "docs/types.png",
+          "hash": "9979667564085555112"
+        },
+        {
+          "file": "jest.config.ts",
+          "hash": "12333515226966617182",
+          "deps": [
+            "npm:@nx/jest"
+          ]
+        },
+        {
+          "file": "jest.preset.js",
+          "hash": "9430166341120122740",
+          "deps": [
+            "npm:@nx/jest"
+          ]
+        },
+        {
+          "file": "migrations.json",
+          "hash": "11754731025197703420"
+        },
+        {
+          "file": "nx.json",
+          "hash": "10355845662403895098"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "9384922806344764894"
+        },
+        {
+          "file": "package.json",
+          "hash": "9761205731330717165"
+        },
+        {
+          "file": "project.json",
+          "hash": "14270586715379642869"
+        },
+        {
+          "file": "release.config.js",
+          "hash": "5891170741678413892"
+        },
+        {
+          "file": "tools/scripts/publish.mjs",
+          "hash": "9485274327411133040",
+          "deps": [
+            "npm:child_process",
+            "npm:fs",
+            "npm:chalk",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "tsconfig.base.json",
+          "hash": "15772588564003373708"
         }
       ],
       "tooling-nx-plugin-generators": [
@@ -606,225 +833,7 @@
           "file": "libs/tooling/nx-plugin/generators/tsconfig.spec.json",
           "hash": "12676338339107966475"
         }
-      ],
-      "ax-nx-plugin-workspace": [
-        {
-          "file": ".ax.config.json",
-          "hash": "1340829166436045723"
-        },
-        {
-          "file": ".editorconfig",
-          "hash": "5443105041930014821"
-        },
-        {
-          "file": ".eslintignore",
-          "hash": "7663861978715868291"
-        },
-        {
-          "file": ".eslintrc-angular.json",
-          "hash": "14242169620473342076"
-        },
-        {
-          "file": ".eslintrc-ngrx.json",
-          "hash": "4128046395051612814"
-        },
-        {
-          "file": ".eslintrc.json",
-          "hash": "11574629289848961625"
-        },
-        {
-          "file": ".github/workflows/ci.yml",
-          "hash": "12945670883121043129"
-        },
-        {
-          "file": ".github/workflows/release.yml",
-          "hash": "10092510407796624812"
-        },
-        {
-          "file": ".gitignore",
-          "hash": "3583689735365856263"
-        },
-        {
-          "file": ".npmrc",
-          "hash": "806553954559008599"
-        },
-        {
-          "file": ".prettierignore",
-          "hash": "16479312547820070036"
-        },
-        {
-          "file": ".prettierrc",
-          "hash": "8130880107294852815"
-        },
-        {
-          "file": ".verdaccio/config.yml",
-          "hash": "18364357067868980959"
-        },
-        {
-          "file": ".verdaccio/htpasswd",
-          "hash": "18438619983611958715"
-        },
-        {
-          "file": "README.md",
-          "hash": "2428966330377374428"
-        },
-        {
-          "file": "apps/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "docs/README.md",
-          "hash": "2310841811663877147"
-        },
-        {
-          "file": "docs/architecture.excalidraw",
-          "hash": "12540513505371868476"
-        },
-        {
-          "file": "docs/architecture.png",
-          "hash": "13139230679049872771"
-        },
-        {
-          "file": "docs/selectors.excalidraw",
-          "hash": "15954424021334929527"
-        },
-        {
-          "file": "docs/selectors.png",
-          "hash": "16523618057021746464"
-        },
-        {
-          "file": "docs/types.excalidraw",
-          "hash": "9900857568212363017"
-        },
-        {
-          "file": "docs/types.png",
-          "hash": "9979667564085555112"
-        },
-        {
-          "file": "jest.config.ts",
-          "hash": "12333515226966617182",
-          "deps": [
-            "npm:@nx/jest"
-          ]
-        },
-        {
-          "file": "jest.preset.js",
-          "hash": "9430166341120122740",
-          "deps": [
-            "npm:@nx/jest"
-          ]
-        },
-        {
-          "file": "migrations.json",
-          "hash": "11754731025197703420"
-        },
-        {
-          "file": "nx.json",
-          "hash": "10355845662403895098"
-        },
-        {
-          "file": "package.json",
-          "hash": "9761205731330717165"
-        },
-        {
-          "file": "project.json",
-          "hash": "14270586715379642869"
-        },
-        {
-          "file": "release.config.js",
-          "hash": "5891170741678413892"
-        },
-        {
-          "file": "tools/scripts/publish.mjs",
-          "hash": "9485274327411133040",
-          "deps": [
-            "npm:child_process",
-            "npm:fs",
-            "npm:chalk",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "tsconfig.base.json",
-          "hash": "15772588564003373708"
-        }
-      ],
-      "tooling-nx-plugin-validators": [
-        {
-          "file": "libs/tooling/nx-plugin/validators/.eslintrc.json",
-          "hash": "4060609842899411029"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/README.md",
-          "hash": "10808454116467325009"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/generators.json",
-          "hash": "1521044451708123978"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/jest.config.ts",
-          "hash": "10551295982115216078"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/package-lock.json",
-          "hash": "9526950535647397701"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/package.json",
-          "hash": "2381165151099912703",
-          "deps": [
-            "npm:chalk"
-          ]
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/project.json",
-          "hash": "5333715124941086772"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/generator.spec.ts",
-          "hash": "3775989106480202960",
-          "deps": [
-            "npm:@nx/devkit",
-            "tooling-nx-plugin-config"
-          ]
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/generator.ts",
-          "hash": "7671751012756824637",
-          "deps": [
-            "npm:chalk",
-            "npm:path",
-            "npm:@nx/devkit",
-            "tooling-nx-plugin-config"
-          ]
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/schema.d.ts",
-          "hash": "5819220933278268906"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/src/generators/validate/schema.json",
-          "hash": "66282947766089941"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/src/index.ts",
-          "hash": "1396666921406885142"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/tsconfig.json",
-          "hash": "18017263261948858813"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/tsconfig.lib.json",
-          "hash": "5419457303262888731"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/validators/tsconfig.spec.json",
-          "hash": "12676338339107966475"
-        }
       ]
-    },
-    "nonProjectFiles": []
+    }
   }
 }
