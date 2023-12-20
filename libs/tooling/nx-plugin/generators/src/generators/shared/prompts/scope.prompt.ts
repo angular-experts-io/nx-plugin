@@ -1,7 +1,7 @@
 import * as inquirer from 'inquirer';
 import { Tree } from '@nrwl/devkit';
 
-import { getScopes } from '../config/config.helper';
+import {getScopes} from "@ax/tooling/nx-plugin/config";
 
 export async function scopePrompt(
   tree: Tree,

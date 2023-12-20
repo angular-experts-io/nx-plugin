@@ -1,0 +1,11 @@
+{
+  "scopes": [
+    "sales",
+    "supply",
+    "production",
+    "store-app",
+    "shared"
+  ],
+  "prefix": "my-org",
+  "appSuffix": "app"
+}

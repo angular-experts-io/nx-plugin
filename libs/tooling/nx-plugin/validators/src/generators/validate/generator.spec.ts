@@ -3,7 +3,7 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 
 import generator from './generator';
 import { ValidateGeneratorSchema } from './schema';
-import * as configHelper from '../shared/config/config.helper';
+import * as configHelper from '@ax/tooling/nx-plugin/config';
 
 // sanity tests, for generators it's better to keep it open and flexible to allow easy extension
 // and adjustment of the logic in the future

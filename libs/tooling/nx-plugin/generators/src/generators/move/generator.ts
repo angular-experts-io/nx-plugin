@@ -2,7 +2,7 @@ import { moveGenerator } from '@nrwl/workspace/generators';
 import { formatFiles, Tree } from '@nrwl/devkit';
 import { validate } from '@ax/tooling/nx-plugin/validators';
 import inquirer from 'inquirer';
-import blue from 'chalk';
+import * as chalk from 'chalk';
 
 import {addScope} from "@ax/tooling/nx-plugin/config";
 
@@ -56,7 +56,7 @@ export default async function move(tree: Tree, schema: MoveSchema) {
       const changeName = await inquirer.prompt({
         type: 'list',
         name: 'yes',
-        message: `Do you want to keep ${blue(
+        message: `Do you want to keep ${chalk.default.blue(
           name
         )} as name, or do you want to change the name?`,
         choices: [

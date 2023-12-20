@@ -6,9 +6,7 @@ import { NormalizedSchema, LibTypeGenerator } from '../generator.interface';
 import { extendEslintJson } from './helpers/eslint';
 
 export function patternTypeFactory(
-  options: NormalizedSchema
 ): LibTypeGenerator {
-  const { scope } = options;
   return {
     libGenerator: libraryGenerator,
     libDefaultOptions: {
