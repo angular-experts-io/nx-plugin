@@ -95,6 +95,60 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
+      "tooling-nx-plugin-config": [
+        {
+          "file": "libs/tooling/nx-plugin/config/.eslintrc.json",
+          "hash": "15754961097349354736"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/README.md",
+          "hash": "5737414999656167607"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/jest.config.ts",
+          "hash": "2076786795323067777"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/package-lock.json",
+          "hash": "18213964522934649663"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/package.json",
+          "hash": "4195037350856133493",
+          "deps": [
+            "npm:inquirer",
+            "npm:@types/inquirer"
+          ]
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/project.json",
+          "hash": "17388542100888902116"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/src/index.ts",
+          "hash": "4261738526690432499"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/src/lib/config.helper.ts",
+          "hash": "10560189062792512190",
+          "deps": [
+            "npm:inquirer",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/tsconfig.json",
+          "hash": "9584156853704587869"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/tsconfig.lib.json",
+          "hash": "5419457303262888731"
+        },
+        {
+          "file": "libs/tooling/nx-plugin/config/tsconfig.spec.json",
+          "hash": "12676338339107966475"
+        }
+      ],
       "tooling-nx-plugin-validators": [
         {
           "file": "libs/tooling/nx-plugin/validators/.eslintrc.json",
@@ -118,7 +172,10 @@
         },
         {
           "file": "libs/tooling/nx-plugin/validators/package.json",
-          "hash": "2381165151099912703"
+          "hash": "2381165151099912703",
+          "deps": [
+            "npm:chalk"
+          ]
         },
         {
           "file": "libs/tooling/nx-plugin/validators/project.json",
@@ -129,7 +186,6 @@
           "hash": "3775989106480202960",
           "deps": [
             "npm:@nx/devkit",
-            "npm:@nx/devkit/testing",
             "tooling-nx-plugin-config"
           ]
         },
@@ -168,56 +224,6 @@
           "hash": "12676338339107966475"
         }
       ],
-      "tooling-nx-plugin-config": [
-        {
-          "file": "libs/tooling/nx-plugin/config/.eslintrc.json",
-          "hash": "15754961097349354736"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/README.md",
-          "hash": "5737414999656167607"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/jest.config.ts",
-          "hash": "2076786795323067777"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/package-lock.json",
-          "hash": "18213964522934649663"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/package.json",
-          "hash": "4195037350856133493"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/project.json",
-          "hash": "17388542100888902116"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/src/index.ts",
-          "hash": "4261738526690432499"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/src/lib/config.helper.ts",
-          "hash": "10560189062792512190",
-          "deps": [
-            "npm:inquirer",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/tsconfig.json",
-          "hash": "9584156853704587869"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/tsconfig.lib.json",
-          "hash": "5419457303262888731"
-        },
-        {
-          "file": "libs/tooling/nx-plugin/config/tsconfig.spec.json",
-          "hash": "12676338339107966475"
-        }
-      ],
       "ax-nx-plugin-workspace": [
         {
           "file": ".ax.config.json",
@@ -253,7 +259,7 @@
         },
         {
           "file": ".gitignore",
-          "hash": "9437586763271846806"
+          "hash": "6260611379607193793"
         },
         {
           "file": ".npmrc",
@@ -322,7 +328,7 @@
           "file": "jest.preset.js",
           "hash": "9430166341120122740",
           "deps": [
-            "npm:@nx/jest/preset"
+            "npm:@nx/jest"
           ]
         },
         {
@@ -334,8 +340,89 @@
           "hash": "10355845662403895098"
         },
         {
+          "file": "package-lock.json",
+          "hash": "15670629624382838121"
+        },
+        {
           "file": "package.json",
-          "hash": "9761205731330717165"
+          "hash": "9761205731330717165",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/animations",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/forms",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/router",
+            "npm:@ngrx/store",
+            "npm:@types/inquirer",
+            "npm:chalk",
+            "npm:rxjs",
+            "npm:tslib",
+            "npm:zone.js",
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular-devkit/core",
+            "npm:@angular-devkit/schematics",
+            "npm:@angular-eslint/eslint-plugin",
+            "npm:@angular-eslint/eslint-plugin-template",
+            "npm:@angular-eslint/template-parser",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@angular/language-service",
+            "npm:@nx/angular",
+            "npm:@nx/cypress",
+            "npm:@nx/devkit",
+            "npm:@nx/eslint-plugin",
+            "npm:@nx/jest",
+            "npm:@nx/js",
+            "npm:@nx/linter",
+            "npm:@nx/plugin",
+            "npm:@nx/web",
+            "npm:@nx/workspace",
+            "npm:@schematics/angular",
+            "npm:@semantic-release/changelog",
+            "npm:@semantic-release/commit-analyzer",
+            "npm:@semantic-release/exec",
+            "npm:@semantic-release/git",
+            "npm:@semantic-release/release-notes-generator",
+            "npm:@swc-node/register",
+            "npm:@swc/cli",
+            "npm:@swc/core",
+            "npm:@swc/helpers",
+            "npm:@types/jest",
+            "npm:@types/node",
+            "npm:@typescript-eslint/eslint-plugin",
+            "npm:@typescript-eslint/parser",
+            "npm:conventional-changelog-conventionalcommits",
+            "npm:cypress",
+            "npm:eslint",
+            "npm:eslint-config-prettier",
+            "npm:eslint-plugin-cypress",
+            "npm:handlebars",
+            "npm:http-server",
+            "npm:husky",
+            "npm:inquirer",
+            "npm:inquirer-autocomplete-prompt",
+            "npm:jest",
+            "npm:jest-environment-jsdom",
+            "npm:jest-preset-angular",
+            "npm:json-server",
+            "npm:jsonc-eslint-parser",
+            "npm:lint-staged",
+            "npm:markdown-toc",
+            "npm:npm-run-all",
+            "npm:nx",
+            "npm:nx-release",
+            "npm:prettier",
+            "npm:replace-json-property",
+            "npm:source-map-explorer",
+            "npm:ts-jest",
+            "npm:ts-node",
+            "npm:typescript",
+            "npm:verdaccio"
+          ]
         },
         {
           "file": "project.json",
@@ -405,7 +492,6 @@
           "file": "libs/tooling/nx-plugin/generators/src/generators/app/generator.spec.ts",
           "hash": "804817193264652368",
           "deps": [
-            "npm:@nrwl/devkit/testing",
             "npm:@nrwl/devkit"
           ]
         },
@@ -416,8 +502,7 @@
             "npm:path",
             "npm:fs",
             "npm:@nx/devkit",
-            "npm:@nx/devkit/src/utils/string-utils",
-            "npm:@nx/angular/generators",
+            "npm:@nx/angular",
             "tooling-nx-plugin-config"
           ]
         },
@@ -484,7 +569,7 @@
           "file": "libs/tooling/nx-plugin/generators/src/generators/lib/files/state/lib/__projectName__.effects.spec.ts",
           "hash": "5617246286119475512",
           "deps": [
-            "npm:rxjs/testing"
+            "npm:rxjs"
           ]
         },
         {
@@ -526,7 +611,7 @@
           "hash": "937011369169402688",
           "deps": [
             "npm:@angular/core",
-            "npm:@angular/common/http"
+            "npm:@angular/common"
           ]
         },
         {
@@ -537,7 +622,7 @@
           "file": "libs/tooling/nx-plugin/generators/src/generators/lib/files/util/lib/__projectName__.service.spec.ts",
           "hash": "1075166821751228279",
           "deps": [
-            "npm:@angular/core/testing"
+            "npm:@angular/core"
           ]
         },
         {
@@ -552,14 +637,13 @@
           "hash": "12643617170295389714",
           "deps": [
             "npm:@nx/devkit",
-            "npm:nx/src/config/misc-interfaces"
+            "npm:nx"
           ]
         },
         {
           "file": "libs/tooling/nx-plugin/generators/src/generators/lib/generator.spec.ts",
           "hash": "1656734658203775118",
           "deps": [
-            "npm:@nrwl/devkit/testing",
             "npm:@nrwl/devkit"
           ]
         },
@@ -569,8 +653,7 @@
           "deps": [
             "npm:fs",
             "npm:path",
-            "npm:@nx/devkit",
-            "npm:@nx/devkit/src/utils/string-utils"
+            "npm:@nx/devkit"
           ]
         },
         {
@@ -587,7 +670,7 @@
           "deps": [
             "npm:path",
             "npm:@nx/devkit",
-            "npm:@nx/angular/generators"
+            "npm:@nx/angular"
           ]
         },
         {
@@ -605,7 +688,7 @@
           "deps": [
             "npm:path",
             "npm:@nx/devkit",
-            "npm:@nx/angular/generators"
+            "npm:@nx/angular"
           ]
         },
         {
@@ -631,7 +714,7 @@
           "deps": [
             "npm:path",
             "npm:@nx/devkit",
-            "npm:@nx/angular/generators"
+            "npm:@nx/angular"
           ]
         },
         {
@@ -640,7 +723,7 @@
           "deps": [
             "npm:path",
             "npm:@nx/devkit",
-            "npm:@nx/angular/generators"
+            "npm:@nx/angular"
           ]
         },
         {
@@ -658,14 +741,14 @@
           "deps": [
             "npm:path",
             "npm:@nx/devkit",
-            "npm:@nx/angular/generators"
+            "npm:@nx/angular"
           ]
         },
         {
           "file": "libs/tooling/nx-plugin/generators/src/generators/move/generator.ts",
           "hash": "3861962895159191269",
           "deps": [
-            "npm:@nrwl/workspace/generators",
+            "npm:@nrwl/workspace",
             "npm:@nrwl/devkit",
             "tooling-nx-plugin-validators",
             "npm:inquirer",
@@ -774,7 +857,7 @@
           "file": "libs/tooling/nx-plugin/generators/src/generators/shared/utils/generators-angular.ts",
           "hash": "2448398896972449059",
           "deps": [
-            "npm:@nrwl/devkit/ngcli-adapter"
+            "npm:@nrwl/devkit"
           ]
         },
         {
