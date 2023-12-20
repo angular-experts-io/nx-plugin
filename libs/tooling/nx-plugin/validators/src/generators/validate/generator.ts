@@ -1,5 +1,6 @@
 import chalk from 'chalk';
-import * as path from 'path';
+
+import path from 'path';
 import { formatFiles, readJson, Tree, updateJson } from '@nx/devkit';
 
 import { getScopes } from '@ax/tooling/nx-plugin/config';
@@ -20,6 +21,7 @@ export default async function validate(
   tree: Tree,
   schema: ValidateGeneratorSchema
 ) {
+  console.log(chalk.green('test'));
   const { fix } = schema;
   const projectJsonPaths = [
     ...findFiles(tree, './apps', 'project.json'),

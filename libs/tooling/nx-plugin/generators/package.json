@@ -1,7 +1,7 @@
 {
   "name": "@ax/nx-plugin-generators",
   "version": "0.0.1",
-  "type": "commonjs",
+  "type": "module",
   "generators": "./generators.json",
   "publishConfig": {
     "access": "public"
