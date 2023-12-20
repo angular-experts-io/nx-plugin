@@ -1,5 +1,5 @@
 {
-  "name": "@ax/tooling/nx-plugin/config",
+  "name": "@ax/nx-plugin-config",
   "version": "0.0.1",
   "type": "commonjs",
   "dependencies": {
