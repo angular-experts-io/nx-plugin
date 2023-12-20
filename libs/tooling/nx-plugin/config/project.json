@@ -38,6 +38,12 @@
           "codeCoverage": true
         }
       }
+    },
+    "release": {
+      "executor": "nx-release:build-update-publish",
+      "options": {
+        "libName": "@ax/nx-plugin-config"
+      }
     }
   },
   "tags": ["scope:tooling"]

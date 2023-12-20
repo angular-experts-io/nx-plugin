@@ -42,6 +42,12 @@
           "codeCoverage": true
         }
       }
+    },
+    "release": {
+      "executor": "nx-release:build-update-publish",
+      "options": {
+        "libName": "@ax/nx-plugin-validators"
+      }
     }
   },
   "tags": ["scope:tooling"]
